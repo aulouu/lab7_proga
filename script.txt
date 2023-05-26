@@ -1,0 +1,17 @@
+help
+info
+show
+add
+Albert
+85
+15
+1500
+2004-07-17
+HEAD_OF_DIVISION
+RECOMMENDED_FOR_PROMOTION
+190
+BLACK
+ITALY
+46
+17
+pool

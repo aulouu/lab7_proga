@@ -1,0 +1,94 @@
+[
+  {
+    "id": 3,
+    "name": "Ravil",
+    "coordinates": {
+      "x": 12,
+      "y": 7.0
+    },
+    "creationDate": "2011-12-03T10:15:30",
+    "salary": 250,
+    "startDate": "2011-12-03",
+    "position": "MANAGER_OF_CLEANING",
+    "status": "PROBATION",
+    "person": {
+      "height": 150,
+      "eyeColor": "BLACK",
+      "nationality": "THAILAND",
+      "location": {
+        "x": 12,
+        "y": 10.0,
+        "name": "floor"
+      }
+    }
+  },
+  {
+    "id": 25,
+    "name": "Alina",
+    "coordinates": {
+      "x": 857,
+      "y": 2.0
+    },
+    "creationDate": "2023-03-15T10:45:12",
+    "salary": 1556,
+    "startDate": "2005-05-18",
+    "position": "DEVELOPER",
+    "status": "HIRED",
+    "person": {
+      "height": 163,
+      "eyeColor": "ORANGE",
+      "nationality": "ITALY",
+      "location": {
+        "x": 13,
+        "y": 586478.0,
+        "name": "bed"
+      }
+    }
+  },
+  {
+    "id": 26,
+    "name": "Anya",
+    "coordinates": {
+      "x": 85,
+      "y": 45.0
+    },
+    "creationDate": "2023-04-10T19:18:02.2221549",
+    "salary": 1000000,
+    "startDate": "2004-10-15",
+    "position": "ENGINEER",
+    "status": "HIRED",
+    "person": {
+      "height": 170,
+      "eyeColor": "ORANGE",
+      "nationality": "VATICAN",
+      "location": {
+        "x": 54,
+        "y": 74.0,
+        "name": "dyb"
+      }
+    }
+  },
+  {
+    "id": 27,
+    "name": "Albert",
+    "coordinates": {
+      "x": 96,
+      "y": 69.0
+    },
+    "creationDate": "2023-04-10T21:25:03.7104721",
+    "salary": 69966996,
+    "startDate": "2004-07-17",
+    "position": "HUMAN_RESOURCES",
+    "status": "RECOMMENDED_FOR_PROMOTION",
+    "person": {
+      "height": 180,
+      "eyeColor": "GREEN",
+      "nationality": "JAPAN",
+      "location": {
+        "x": 25,
+        "y": 52.0,
+        "name": "loop"
+      }
+    }
+  }
+]
