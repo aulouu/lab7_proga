@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/console/Console.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/console/EmptyConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/console/Print.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/ColorForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/CoordinatesForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/CountryForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/Forms.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/LocationForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/PersonForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/PositionForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/StatusForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/managers/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/managers/ScannerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/CommandRuntime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/IllegalArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/InvalidForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/MustExit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/NoCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/RecursionScript.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Coordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Validator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/models/Worker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/work/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/work/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/work/ResponseStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/console/Console.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/console/EmptyConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/console/Print.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/ClosingSocket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/ConnectionError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/OpeningServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/Main.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QKGZdyQW6ZZs8oQyu47l7ZHHXY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Users/Алина/IdeaProjects/lab7_proga/server/src/main/java/console"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\console" />
+      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\exceptions" />
+      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\client\src\main\java\forms" />
+      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\client\src\main\java\console" />
+      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\common\src\main\java\work" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="managers" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="" />
+      <created>1685094917818</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685094917818</updated>
+      <workItem from="1685094919598" duration="2212000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
