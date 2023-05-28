@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="new">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/managers/AskUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/work/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/CommandExecute.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/managers/SQLRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/forms/PersonForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/forms/PersonForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/ScannerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/ScannerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/models/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/models/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/work/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/work/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/work/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/work/ResponseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
-    </list>
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="db" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1685094917818</updated>
       <workItem from="1685094919598" duration="13408000" />
-      <workItem from="1685269154015" duration="10418000" />
+      <workItem from="1685269154015" duration="11033000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1685099737128</created>
@@ -113,7 +95,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685099737128</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="db sql requests">
+      <created>1685285709270</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685285709270</updated>
+    </task>
+    <task id="LOCAL-00003" summary="db">
+      <created>1685285755293</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685285755293</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +128,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new" />
-    <option name="LAST_COMMIT_MESSAGE" value="new" />
+    <MESSAGE value="db sql requests" />
+    <MESSAGE value="db" />
+    <option name="LAST_COMMIT_MESSAGE" value="db" />
   </component>
 </project>

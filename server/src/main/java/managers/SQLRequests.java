@@ -58,7 +58,7 @@ public class SQLRequests {
                 person_location_x BIGINT NOT NULL,
                 person_location_y BIGINT NOT NULL,
                 person_location_name TEXT
-                owner TEXT REFERENCES users
+                owner TEXT NOT NULL
             );
             """;
 
