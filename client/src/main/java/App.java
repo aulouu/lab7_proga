@@ -27,7 +27,7 @@ public class App {
     public static void main(String[] args) {
         if (!initializeConnectionAddress(args)) return;
         Client client = new Client(host, port, 10000, 5, console);
-        client.connectToServer();
+        //client.connectToServer();
         new RuntimeManager(console, new Scanner(System.in), client).runTime();
     }
 }

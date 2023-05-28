@@ -3,7 +3,7 @@ package forms;
 import console.EmptyConsole;
 import console.Print;
 import managers.ScannerManager;
-import models.Person;
+import models.*;
 
 import java.util.Scanner;
 

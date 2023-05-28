@@ -20,6 +20,7 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
     private Position position; // Поле не может быть null
     private Status status; // Поле может быть null
     private Person person; // Поле не может быть null
+    private String user;
 
     private static int nextID = 0;
 
@@ -33,6 +34,19 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
         this.position = position;
         this.status = status;
         this.person = person;
+    }
+
+    public Worker(int id, String name, Coordinates coordinates, LocalDateTime creationDate, long salary, LocalDate startDate, Position position, Status status, Person person, String user) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.salary = salary;
+        this.startDate = startDate;
+        this.position = position;
+        this.status = status;
+        this.person = person;
+        this.user = user;
     }
 
     /**
@@ -129,6 +143,14 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     /**

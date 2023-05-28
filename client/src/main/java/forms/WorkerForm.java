@@ -3,7 +3,7 @@ package forms;
 import console.EmptyConsole;
 import console.Print;
 import managers.ScannerManager;
-import models.Worker;
+import models.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

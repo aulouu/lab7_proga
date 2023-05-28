@@ -9,6 +9,7 @@ public class Request implements Serializable {
     private String commandName;
     private String args = "";
     private Worker object = null;
+    private User user;
 
     public String getCommandName() {
         return commandName;
@@ -22,24 +23,31 @@ public class Request implements Serializable {
         return object;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     public Request(ResponseStatus OK, String commandName, Worker help) {
         this.commandName = commandName.trim();
     }
 
-    public Request(String commandName, String args) {
+    public Request(String commandName, String args, User user) {
         this.commandName = commandName.trim();
         this.args = args;
+        this.user = user;
     }
 
-    public Request(String commandName, Worker object) {
+    public Request(String commandName, Worker object, User user) {
         this.commandName = commandName.trim();
         this.object = object;
+        this.user = user;
     }
 
-    public Request(String commandName, String args, Worker object) {
+    public Request(String commandName, String args, Worker object, User user) {
         this.commandName = commandName.trim();
         this.args = args.trim();
         this.object = object;
+        this.user = user;
     }
 
     public boolean isEmpty() {

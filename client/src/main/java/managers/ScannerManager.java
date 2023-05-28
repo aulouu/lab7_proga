@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 
 public class ScannerManager {
-    private static Scanner Scanner;
+    private static Scanner Scanner = new Scanner(System.in);
     private static boolean fileMode = false;
 
     /**
@@ -22,8 +22,8 @@ public class ScannerManager {
      *
      * @param scanner сканер
      */
-    public static void setScanner(java.util.Scanner scanner) {
-        Scanner = scanner;
+    public static void setScanner(Scanner scanner) {
+        ScannerManager.Scanner = scanner;
     }
 
     /**

@@ -9,6 +9,7 @@ import models.Worker;
 import work.Request;
 import work.Response;
 import work.ResponseStatus;
+import work.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,6 +27,7 @@ public class RuntimeManager {
     private final Scanner scanner;
     private final Client client;
     private static List<Path> Stack = new LinkedList<>();
+    private User user = null;
 
     public RuntimeManager(Print console, Scanner scanner, Client client) {
         this.console = console;
@@ -56,20 +58,35 @@ public class RuntimeManager {
         //Scanner scanner = ScannerManager.getScanner();
         while (true) {
             try {
+                if (Objects.isNull(user)) {
+                    Response responsetoUser = null;
+                    boolean isAuth = true;
+                    do {
+                        if(!Objects.isNull(responsetoUser)) {
+                            console.println( (isAuth)
+                                    ? "Неверный логин или пароль, попробуйте снова."
+                                    : "Логин уже существует, попробуйте снова.");
+                        }
+                        AskUser askUser = new AskUser(console);
+                        isAuth = askUser.askAuth();
+                        user = new AskUser(console).build();
+                        if (isAuth) {
+                            //responsetoUser = client.sendAndAskResponse(new Request("ping", "", user));
+                        } else {
+                            //responsetoUser = client.sendAndAskResponse(new Request("register", "", user));
+                        }
+                    } while (responsetoUser.getResponseStatus() != ResponseStatus.OK);
+                }
                 if (!scanner.hasNext()) throw new MustExit();
                 String[] userCommand = (scanner.nextLine().trim() + " ").split(" ", 2);
-                Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim()));
+                Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim(), user));
                 this.printResponse(response);
                 switch (response.getResponseStatus()) {
                     case ASK_OBJECT -> {
                         ScannerManager.setScanner(scanner);
                         Worker worker = new WorkerForm(console).build();
                         if (!worker.validate()) throw new InvalidForm();
-                        Response newResponse = client.sendAndAskResponse(
-                                new Request(
-                                        userCommand[0].trim(),
-                                        userCommand[1].trim(),
-                                        worker));
+                        Response newResponse = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim(), worker, user));
                         if (newResponse.getResponseStatus() != ResponseStatus.OK) {
                             console.printError(newResponse.getResponse());
                         } else {
@@ -81,6 +98,10 @@ public class RuntimeManager {
                         ScannerManager.setFileMode();
                         this.script(response.getResponse());
                         ScannerManager.setUserMode();
+                    }
+                    case AUTH_ERROR -> {
+                        console.printError("Ошибка авторизации, попробуйте еще раз.");
+                        this.user = null;
                     }
                     default -> {
                     }
@@ -114,17 +135,13 @@ public class RuntimeManager {
                         throw new RecursionScript();
                 }
                 console.println("$ " + String.join(" ", userCmd));
-                Response response = client.sendAndAskResponse(new Request(userCmd[0].trim(), userCmd[1].trim()));
+                Response response = client.sendAndAskResponse(new Request(userCmd[0].trim(), userCmd[1].trim(), user));
                 this.printResponse(response);
                 switch (response.getResponseStatus()) {
                     case ASK_OBJECT -> {
                         Worker worker = new WorkerForm(console).build();
                         if (!worker.validate()) throw new InvalidForm();
-                        Response newResponse = client.sendAndAskResponse(
-                                new Request(
-                                        userCmd[0].trim(),
-                                        userCmd[1].trim(),
-                                        worker));
+                        Response newResponse = client.sendAndAskResponse(new Request(userCmd[0].trim(), userCmd[1].trim(), worker, user));
                         if (newResponse.getResponseStatus() != ResponseStatus.OK) {
                             console.printError(newResponse.getResponse());
                         } else {
