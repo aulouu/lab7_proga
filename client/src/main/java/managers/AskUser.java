@@ -3,11 +3,8 @@ package managers;
 import console.EmptyConsole;
 import console.Print;
 import forms.Forms;
-import models.Person;
 import work.User;
 
-import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class AskUser extends Forms<User> {
