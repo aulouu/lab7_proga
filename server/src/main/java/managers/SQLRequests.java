@@ -68,7 +68,7 @@ public class SQLRequests {
             RETURNING id;
             """;
 
-    public static final String GET_OBJECT = """
+    public static final String GET_OBJECTS = """
             SELECT * FROM worker;
             """;
 
