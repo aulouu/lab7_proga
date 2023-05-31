@@ -1,5 +1,6 @@
 package managers;
 
+import console.Console;
 import console.Print;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,7 @@ public class DatabaseHandler {
     private String user;
     private String password;*/
     private Connection connection;
-    private Print console;
+    private Print console = new Console();
     static final Logger databaseHandlerLogger = LoggerFactory.getLogger(DatabaseHandler.class);
 
     /*public DatabaseHandler() {

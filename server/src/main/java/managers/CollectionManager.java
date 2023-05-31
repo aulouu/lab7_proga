@@ -1,32 +1,37 @@
 package managers;
 
+import console.Console;
+import console.Print;
 import exceptions.InvalidForm;
 import models.Worker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Deque;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
  * Менеджер коллекции - класс для работы с коллекцией
  */
 
 public class CollectionManager {
-    private ArrayDeque<Worker> collection = new ArrayDeque<>();
-    private final FileManager fileManager;
+    private Deque<Worker> collection = new ConcurrentLinkedDeque<>();
     /**
      * Дата создания коллекции
      */
     private LocalDateTime lastInitTime;
+    private DatabaseManager databaseManager;
+    private Print console;
     static final Logger collectionManagerLogger = LoggerFactory.getLogger(CollectionManager.class);
 
-    public CollectionManager(FileManager fileManager) {
-        this.fileManager = fileManager;
+    public CollectionManager(DatabaseManager databaseManager) {
         this.lastInitTime = null;
+        this.databaseManager = databaseManager;
+        this.console = new Console();
 
         loadCollection();
     }
@@ -34,7 +39,7 @@ public class CollectionManager {
     /**
      * @return коллекция
      */
-    public ArrayDeque<Worker> getCollection() {
+    public Deque<Worker> getCollection() {
         return collection;
     }
 
@@ -70,20 +75,16 @@ public class CollectionManager {
      * Загружает коллекцию из файла
      */
     private void loadCollection() {
-        collection = (ArrayDeque<Worker>) fileManager.readCollection();
-        lastInitTime = LocalDateTime.now();
-    }
-
-    /**
-     * Проверка на валидацию в исходном файле
-     */
-    public void validateAll() {
-        (new ArrayList<>(this.getCollection())).forEach(worker -> {
-            if (!worker.validate()) {
-                collectionManagerLogger.info("Worker с id=" + worker.getId() + " имеет невалидные поля.");
-                System.exit(0);
-            }
-        });
+        try {
+            lastInitTime = LocalDateTime.now();
+            collection = databaseManager.readAll();
+            console.println("Коллекция загружена.");
+            collectionManagerLogger.info("Коллекция загружена.");
+        } catch (SQLException exception) {
+            collection = new ConcurrentLinkedDeque<>();
+            console.printError("Коллекция не может быть загружена.");
+            collectionManagerLogger.error("Коллекция не может быть загружена.");
+        }
     }
 
     /**
@@ -153,40 +154,6 @@ public class CollectionManager {
         collection.add(worker);
         collectionManagerLogger.info("Элемент добавлен в коллекцию.");
     }
-
-    /*/**
-     * Метод для команды FilterByStatus
-     *
-     * @param status статус
-     */
-    /*public void filterByStatus(Status status) {
-        boolean hasElement = false;
-        for (Worker worker : collection) {
-            if (worker.getStatus().equals(status)) {
-                collectionManagerLogger.info(worker.toString());
-                hasElement = true;
-            }
-        }
-        if (!hasElement)
-            collectionManagerLogger.info("Нет элемента с таким статусом.");
-    }*/
-
-    /*/**
-     * Метод для команды FilterStartsWithName
-     *
-     * @param str подстрока
-     */
-    /*public void filterStartsWithName(Request request) {
-        boolean hasElement = false;
-        for (Worker worker : collection) {
-            if (worker.getName().startsWith(request.getArgs())) {
-                collectionManagerLogger.info(worker.toString());
-                hasElement = true;
-            }
-        }
-        if (!hasElement)
-            collectionManagerLogger.info("Нет элемента, у которого имя начинается с заданной подстроки.");
-    }*/
 
     /**
      * Метод для команды Head

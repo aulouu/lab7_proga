@@ -1,5 +1,6 @@
 package managers;
 
+import console.Console;
 import console.Print;
 import models.*;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ public class DatabaseManager {
 
     public DatabaseManager(DatabaseHandler databaseHandler) {
         this.databaseHandler = databaseHandler;
+        this.console = new Console();
     }
 
     public boolean checkUser(String login) throws SQLException {
@@ -31,14 +33,13 @@ public class DatabaseManager {
             return true;
         } catch (SQLException exception) {
             console.printError("Произошла ошибка при проверке пользователя.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedCheckUserStatement);
         }
         return false;
     }
 
-    public void addUser (User user) throws SQLException {
+    public void addUser(User user) throws SQLException {
         PreparedStatement preparedAddUserStatement = null;
         String login = user.getName();
         String pass = user.getPassword();
@@ -51,13 +52,12 @@ public class DatabaseManager {
             databaseManagerLogger.info("Пользователь " + user + " добавлен.");
         } catch (SQLException exception) {
             console.printError("Произошло ошибка при добавлении пользователя.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedAddUserStatement);
         }
     }
 
-    public boolean verifyUser (User newUser) throws SQLException {
+    public boolean verifyUser(User newUser) throws SQLException {
         PreparedStatement preparedVerifyUserStatement = null;
         String login = newUser.getName();
         try {
@@ -70,8 +70,7 @@ public class DatabaseManager {
             } else return false;
         } catch (SQLException exception) {
             console.printError("Произошло ошибка при подтверждении пользователя.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedVerifyUserStatement);
         }
         return false;
@@ -113,8 +112,7 @@ public class DatabaseManager {
             }
         } catch (SQLException exception) {
             console.printError("Произошло ошибка при загрузке коллекции из таблиц бд. Возможно коллекция пустая.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedReadAllStatement);
         }
         return new ArrayDeque<>();
@@ -144,15 +142,14 @@ public class DatabaseManager {
 
             if (preparedAddObjectStatement.executeUpdate() == 0) throw new SQLException();
             ResultSet resultSet = preparedAddObjectStatement.executeQuery();
-            if(!resultSet.next()) {
+            if (!resultSet.next()) {
                 databaseManagerLogger.error("Новый объект не добавлен.");
                 return false;
             } else databaseManagerLogger.info("Новый объект добавлен.");
             return true;
         } catch (SQLException exception) {
             console.printError("Произошла ошибка при добавлении нового объекта в таблицу.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedAddObjectStatement);
         }
         return false;
@@ -170,8 +167,7 @@ public class DatabaseManager {
             return true;
         } catch (SQLException exception) {
             console.printError("Произошла ошибка при удалении объекта.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedRemoveObjectStatement);
         }
         return false;
@@ -189,8 +185,7 @@ public class DatabaseManager {
             return true;
         } catch (SQLException exception) {
             console.printError("Произошла ошибка при удалении всех объектов.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedRemoveAllObjectsStatement);
         }
         return false;
@@ -224,8 +219,7 @@ public class DatabaseManager {
             return true;
         } catch (SQLException exception) {
             console.printError("Произошла ошибка при обновлении объекта.");
-        }
-        finally {
+        } finally {
             databaseHandler.closePreparedStatement(preparedUpdateObjectStatement);
         }
         return false;

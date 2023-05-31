@@ -1,5 +1,6 @@
 package managers;
 
+import console.Console;
 import console.Print;
 
 import java.nio.charset.StandardCharsets;
@@ -7,7 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class PasswordHasher {
-    private static Print console;
+    private static Print console = new Console();
 
     public static String hashPassword(String password) {
         try {
@@ -16,7 +17,7 @@ public class PasswordHasher {
             StringBuilder hexString = new StringBuilder();
             for (int i = 0; i < hash.length; i++) {
                 String hex = Integer.toHexString(0xff & hash[i]);
-                if(hex.length() == 1)
+                if (hex.length() == 1)
                     hexString.append('0');
                 hexString.append(hex);
             }

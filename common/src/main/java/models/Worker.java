@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Objects;
 
 /**
@@ -66,7 +67,7 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
      * @param collection коллекция, в которой получаем ID
      */
 
-    public static void updateId(ArrayDeque<Worker> collection) {
+    public static void updateId(Deque<Worker> collection) {
         int maxId = 0;
         for (Worker worker : collection) {
             if (Objects.isNull(worker)) continue;
