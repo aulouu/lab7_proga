@@ -22,20 +22,18 @@ public class Server {
     private int port;
     private int soTimeout;
     private Print console;
+    private boolean isStopped;
     private ServerSocket serverSocket;
-    private RequestHandler requestHandler;
-    private final FileManager fileManager;
-    private final CollectionManager collectionManager;
-
+    private final CommandManager commandManager;
+    private final DatabaseManager databaseManager;
+    private ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
     static final Logger serverLogger = LoggerFactory.getLogger(Server.class);
-    private final ExecutorService executor = Executors.newCachedThreadPool();
 
-    public Server(int port, int soTimeout, RequestHandler requestHandler, FileManager fileManager, CollectionManager collectionManager) {
+    public Server(int port, int soTimeout, CommandManager commandManager, DatabaseManager databaseManager) {
         this.port = port;
         this.soTimeout = soTimeout;
-        this.requestHandler = requestHandler;
-        this.fileManager = fileManager;
-        this.collectionManager = collectionManager;
+        this.commandManager = commandManager;
+        this.databaseManager = databaseManager;
         this.console = new Console();
     }
 
@@ -80,101 +78,40 @@ public class Server {
     }
 
     /**
-     * Получение запроса от клиента
-     */
-    private void processClientRequest(Socket clientSocket) {
-        executor.submit(() -> {
-            Request userRequest = null;
-            Response responseToUser = null;
-            try (ObjectInputStream clientReader = new ObjectInputStream(clientSocket.getInputStream());
-                 ObjectOutputStream clientWriter = new ObjectOutputStream(clientSocket.getOutputStream())) {
-                do {
-                    userRequest = (Request) clientReader.readObject();
-                    responseToUser = requestHandler.handle(userRequest);
-                    //serverLogger.info("Запрос обработан успешно." /*+ userRequest.getCommandName() + " обработан успешно."*/);
-                    clientWriter.writeObject(responseToUser);
-                    clientWriter.flush();
-                } while (responseToUser.getResponseStatus() != ResponseStatus.EXIT);
-                clientSocket.close();
-                //return false;
-            } catch (ClassNotFoundException exception) {
-                console.printError("Произошла ошибка при чтении данных.");
-                serverLogger.error("Произошла ошибка при чтении данных.");
-            } catch (InvalidClassException | NotSerializableException exception) {
-                console.printError("Произошла ошибка при отправке данных.");
-                serverLogger.error("Произошла ошибка при отправке данных.");
-            } catch (IOException exception) {
-                if (userRequest == null) {
-                    console.printError("Разрыв соединения с клиентом.");
-                    serverLogger.error("Разрыв соединения с клиентом.");
-                } else {
-                    serverLogger.info("Клиент отключен от сервера успешно.");
-                }
-            }
-            //return true;
-        });
-
-    }
-
-    class MyThread implements Runnable {
-        @Override
-        public void run() {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            try {
-                while(true) {
-                    if (br.ready()) {
-                        String input = br.readLine();
-                        switch (input) {
-                            case "save" -> {
-                                fileManager.saveCollection(collectionManager.getCollection());
-                                serverLogger.info("Коллекция сохранена.");
-                            }
-                            case "exit" -> {
-                                fileManager.saveCollection(collectionManager.getCollection());
-                                stop();
-                            }
-                        }
-                    }
-                }
-            } catch (IOException exception) {
-                console.printError("Ошибка при чтении.");
-                serverLogger.error("Ошибка при чтении.");
-            }
-        }
-    }
-
-    /**
      * Начало работы сервера
      */
     public void runServer() {
         try {
             open();
-            new Thread(new MyThread()).start();
-            while (true) {
+            while (!isStopped()) {
                 try  {
-                    processClientRequest(connectToClient());
+                    if (isStopped()) throw new ConnectionError();
+                    Socket clientSocket = connectToClient();
+                    fixedThreadPool.submit(new ConnectionManager(this, clientSocket, commandManager, databaseManager));
                 } catch (SocketTimeoutException ignored) {
                 } catch (ConnectionError exception) {
-                    break;
-                } catch (IOException exception) {
-                    console.printError("Произошла ошибка при попытке завершить соединение с клиентом.");
-                    serverLogger.error("Произошла ошибка при попытке завершить соединение с клиентом.");
+                    if (!isStopped) {
+                        console.printError("Произошла ошибка при соединении с клиентом.");
+                        serverLogger.error("Произошла ошибка при соединении с клиентом.");
+                    } else break;
                 }
             }
-            stop();
         } catch (OpeningServer exception) {
             console.printError("Сервер не может быть запущен.");
             serverLogger.error("Сервер не может быть запущен.");
         }
+        stop();
     }
 
     /**
      * Заканчивает работу сервера
      */
-    private void stop() {
+    public synchronized void stop() {
         try {
             serverLogger.info("Завершение работы сервера...");
             if (serverSocket == null) throw new ClosingSocket();
+            isStopped = true;
+            fixedThreadPool.shutdown();
             serverSocket.close();
             console.println("Работа сервера успешно завершена.");
             serverLogger.info("Работа сервера успешно завершена.");
@@ -185,5 +122,9 @@ public class Server {
             console.printError("Произошла ошибка при завершении работы сервера.");
             serverLogger.error("Произошла ошибка при завершении работы сервера.");
         }
+    }
+
+    private synchronized boolean isStopped() {
+        return isStopped;
     }
 }

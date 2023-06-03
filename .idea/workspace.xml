@@ -4,13 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="]ъ">
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="lala">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/ExecuteScriptCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/ExitCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/PingCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/models/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/models/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid7344.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/PasswordHasher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/SQLRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/SQLRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,44 +49,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/Алина/IdeaProjects/lab7_proga/server/src/main/java/managers",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Алина/IdeaProjects/lab6_proga&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\commands" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\managers" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga" />
-      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\commands" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\console" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\exceptions" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="commands" />
       <recent name="managers" />
       <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="Application.client">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="App" />
-      <module name="server" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="client" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="client" />
@@ -84,10 +89,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="server" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.client" />
-        <item itemvalue="Application.App" />
+        <item itemvalue="Application.server" />
       </list>
     </recent_temporary>
   </component>
@@ -102,7 +114,12 @@
       <workItem from="1685094919598" duration="13408000" />
       <workItem from="1685269154015" duration="12556000" />
       <workItem from="1685386453195" duration="9468000" />
-      <workItem from="1685458615428" duration="17406000" />
+      <workItem from="1685458615428" duration="22907000" />
+      <workItem from="1685537414685" duration="740000" />
+      <workItem from="1685650041845" duration="15404000" />
+      <workItem from="1685717541018" duration="2093000" />
+      <workItem from="1685719949322" duration="62000" />
+      <workItem from="1685720159215" duration="10165000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1685099737128</created>
@@ -146,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685481804784</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="lala">
+      <created>1685531914384</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685531914384</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +195,7 @@
     <MESSAGE value="db/" />
     <MESSAGE value=":)" />
     <MESSAGE value="]ъ" />
-    <option name="LAST_COMMIT_MESSAGE" value="]ъ" />
+    <MESSAGE value="lala" />
+    <option name="LAST_COMMIT_MESSAGE" value="lala" />
   </component>
 </project>

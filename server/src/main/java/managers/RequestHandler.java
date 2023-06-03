@@ -10,9 +10,11 @@ import work.ResponseStatus;
 
 public class RequestHandler {
     private CommandManager commandManager;
+    private Request request;
 
-    public RequestHandler(CommandManager commandManager) {
+    public RequestHandler(CommandManager commandManager, Request request) {
         this.commandManager = commandManager;
+        this.request = request;
     }
 
     public Response handle(Request request) {

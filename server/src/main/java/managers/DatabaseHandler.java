@@ -14,24 +14,28 @@ import java.util.Properties;
 public class DatabaseHandler {
 
     private final String JDBC_DRIVER = "org.postgresql.Driver";
-    /*private String url;
+    private String url;
     private String user;
-    private String password;*/
+    private String password;
     private Connection connection;
-    private Print console = new Console();
+    private Print console;
     static final Logger databaseHandlerLogger = LoggerFactory.getLogger(DatabaseHandler.class);
 
-    /*public DatabaseHandler() {
+    public DatabaseHandler(String url, String user, String password) {
         this.url = url;
         this.user = user;
         this.password = password;
-        this.console = console;
+        this.console = new Console();
 
         connectToDatabase();
-        createTables();
-    }*/
+        try {
+            createTables();
+        } catch (SQLException exception) {
+            console.printError("Таблицы уже существуют.");
+        }
+    }
 
-    /*private void connectToDatabase() {
+    private void connectToDatabase() {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(url, user, password);
@@ -44,36 +48,6 @@ public class DatabaseHandler {
             console.printError("Драйвер управления базой данных не найден.");
             databaseHandlerLogger.error("Драйвер управления базой данных не найден.");
         }
-    }*/
-
-    public boolean connectToDatabase(String prFile) {
-        Properties properties = new Properties();
-        try (FileReader fileReader = new FileReader(prFile)) {
-            properties.load(fileReader);
-        } catch (FileNotFoundException exception) {
-            console.printError("Файл не найден.");
-            return false;
-        } catch (IOException exception) {
-            console.printError("Ошибка при чтении.");
-            return false;
-        }
-        String dbName = properties.getProperty("db");
-        if (dbName == null) {
-            console.printError("Укажите название базы данных.");
-            return false;
-        }
-        try {
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection("jdbc:postgresql:" + dbName, properties);
-        } catch (ClassNotFoundException exception) {
-            console.printError("Драйвер базы данных не найден.");
-            return false;
-        } catch (SQLException exception) {
-            console.printError("Не удалось подключиться к базе данных.");
-            return false;
-        }
-        console.println("Подключение к базе данных установлено успешно.");
-        return true;
     }
 
     public void closeConnection() {
@@ -110,11 +84,12 @@ public class DatabaseHandler {
         }
     }
 
-    public boolean createTables() {
+    public boolean createTables() throws SQLException {
         try {
             connection.prepareStatement(SQLRequests.CREATE_TABLES).execute();
-            databaseHandlerLogger.info("Табоицы успешно созданы.");
+            databaseHandlerLogger.info("Таблицы успешно созданы.");
         } catch (SQLException exception) {
+            exception.printStackTrace();
             console.printError("Произошла ошибка.");
             return false;
         }

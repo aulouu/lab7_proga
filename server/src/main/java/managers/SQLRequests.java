@@ -10,33 +10,33 @@ public class SQLRequests {
             SELECT * FROM users WHERE (login = ?);
             """;
 
-    public static final String CREATE_TABLES = """
+    public static final String CREATE_TABLES = """      
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,
                 login TEXT,
                 password TEXT
             );
-            CREATE TYPE COLOR AS ENUM (
+            CREATE TYPE color AS ENUM (
                 'GREEN',
                 'BLACK',
                 'YELLOW',
                 'ORANGE'
             );
-            CREATE TYPE COUNTRY AS ENUM (
+            CREATE TYPE country AS ENUM (
                 'GERMANY',
                 'VATICAN',
                 'ITALY',
                 'THAILAND',
                 'JAPAN'
             );
-            CREATE TYPE POSITION AS ENUM (
+            CREATE TYPE positions AS ENUM (
                 'HUMAN_RESOURCES',
                 'ENGINEER',
                 'HEAD_OF_DIVISION',
                 'DEVELOPER',
                 'MANAGER_OF_CLEANING'
             );
-            CREATE TYPE STATUS AS ENUM (
+            CREATE TYPE status AS ENUM (
                 'HIRED',
                 'RECOMMENDED_FOR_PROMOTION',
                 'REGULAR',
@@ -50,14 +50,14 @@ public class SQLRequests {
                 creation_date TIMESTAMP NOT NULL DEFAULT now(),
                 salary BIGINT CHECK (salary > 0),
                 start_date BIGINT NOT NULL,
-                position POSITION NOT NULL,
-                status STATUS NOT NULL,
-                person_height BIGINT NOT NULL CHECK (height > 0),
-                person_eye_color COLOR NOT NULL,
-                person_nationality COUNTRY NOT NULL,
+                position positions NOT NULL,
+                status status NOT NULL,
+                person_height BIGINT NOT NULL CHECK (person_height > 0),
+                person_eye_color color NOT NULL,
+                person_nationality country NOT NULL,
                 person_location_x BIGINT NOT NULL,
                 person_location_y BIGINT NOT NULL,
-                person_location_name TEXT
+                person_location_name TEXT,
                 owner TEXT NOT NULL
             );
             """;

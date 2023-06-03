@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
@@ -135,9 +136,7 @@ public class CollectionManager {
     }
 
     /**
-     * Удаляет все элементы из коллекции
-     *
-     * @param collection коллекция
+     * Удаляет элементы из коллекции
      */
     public void removeElements(Collection<Worker> collection) {
         this.collection.removeAll(collection);

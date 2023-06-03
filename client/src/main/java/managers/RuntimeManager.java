@@ -62,8 +62,8 @@ public class RuntimeManager {
                     Response responsetoUser = null;
                     boolean isAuth = true;
                     do {
-                        if(!Objects.isNull(responsetoUser)) {
-                            console.println( (isAuth)
+                        if (!Objects.isNull(responsetoUser)) {
+                            console.println((isAuth)
                                     ? "Неверный логин или пароль, попробуйте снова."
                                     : "Логин уже существует, попробуйте снова.");
                         }
@@ -71,9 +71,9 @@ public class RuntimeManager {
                         isAuth = askUser.askAuth();
                         user = new AskUser(console).build();
                         if (isAuth) {
-                            //responsetoUser = client.sendAndAskResponse(new Request("ping", "", user));
+                            responsetoUser = client.sendAndAskResponse(new Request("ping", "", user));
                         } else {
-                            //responsetoUser = client.sendAndAskResponse(new Request("register", "", user));
+                            responsetoUser = client.sendAndAskResponse(new Request("register", "", user));
                         }
                     } while (responsetoUser.getResponseStatus() != ResponseStatus.OK);
                 }

@@ -176,11 +176,11 @@ public class DatabaseManager {
     public boolean removeAllObjects(int id, User user) throws SQLException {
         PreparedStatement preparedRemoveAllObjectsStatement = null;
         try {
-            preparedRemoveAllObjectsStatement = databaseHandler.getPreparedStatement(SQLRequests.DELETE_OBJECT);
-            preparedRemoveAllObjectsStatement.setInt(1, id);
-            preparedRemoveAllObjectsStatement.setString(2, user.getName());
-            ResultSet resultSet = preparedRemoveAllObjectsStatement.executeQuery();
-            resultSet.next();
+                preparedRemoveAllObjectsStatement = databaseHandler.getPreparedStatement(SQLRequests.DELETE_OBJECT);
+                preparedRemoveAllObjectsStatement.setInt(1, id);
+                preparedRemoveAllObjectsStatement.setString(2, user.getName());
+                ResultSet resultSet = preparedRemoveAllObjectsStatement.executeQuery();
+                resultSet.next();
             databaseManagerLogger.info("Объекты, принадлежащие " + user.getName() + " удалены.");
             return true;
         } catch (SQLException exception) {
@@ -224,4 +224,5 @@ public class DatabaseManager {
         }
         return false;
     }
+
 }
