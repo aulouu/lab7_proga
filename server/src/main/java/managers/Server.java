@@ -7,9 +7,6 @@ import exceptions.ConnectionError;
 import exceptions.OpeningServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import work.Request;
-import work.Response;
-import work.ResponseStatus;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -66,10 +63,6 @@ public class Server {
             console.println("Соединение с клиентом установлено успешно.");
             serverLogger.info("Соединение с клиентом установлено успешно.");
             return clientSocket;
-        } catch (SocketTimeoutException exception) {
-            console.printError("Превышено время ожидания подключения.");
-            serverLogger.error("Превышено время ожидания подключения.");
-            throw new SocketTimeoutException();
         } catch (IOException exception) {
             console.printError("Произошла ошибка при соединении с клиентом.");
             serverLogger.error("Произошла ошибка при соединении с клиентом.");

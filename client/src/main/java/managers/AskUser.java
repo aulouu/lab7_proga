@@ -27,13 +27,14 @@ public class AskUser extends Forms<User> {
         return new User(askLogin(), askPassword());
     }
 
-    public boolean askAuth() {
+    public boolean askAuth(String question) {
+        String finalQuestion = question + " (+/-):";
         String answer;
-        for (; ; ) {
-            console.println("У вас есть учетная запись? (+/-)");
+        for (;;) {
+            console.println(finalQuestion);
             answer = scanner.nextLine().trim();
-            if (answer.equals("+")) return true;
-            else if (answer.equals("-")) return false;
+            if(answer.equals("+")) return true;
+            else if(answer.equals("-")) return false;
             else console.printError("Ответ должен быть + или -");
         }
     }

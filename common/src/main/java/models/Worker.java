@@ -1,10 +1,13 @@
 package models;
 
+import work.User;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Deque;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
  * Класс для рабочего
@@ -20,7 +23,7 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
     private Position position; // Поле не может быть null
     private Status status; // Поле может быть null
     private Person person; // Поле не может быть null
-    private String user;
+    private String owner;
 
     private static int nextID = 0;
 
@@ -36,7 +39,7 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
         this.person = person;
     }
 
-    public Worker(int id, String name, Coordinates coordinates, LocalDateTime creationDate, long salary, LocalDate startDate, Position position, Status status, Person person, String user) {
+    public Worker(int id, String name, Coordinates coordinates, LocalDateTime creationDate, long salary, LocalDate startDate, Position position, Status status, Person person, String owner) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -46,7 +49,7 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
         this.position = position;
         this.status = status;
         this.person = person;
-        this.user = user;
+        this.owner = owner;
     }
 
     /**
@@ -145,12 +148,12 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
         this.person = person;
     }
 
-    public String getUser() {
-        return user;
+    public String  getOwner() {
+        return owner;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setOwner(String  owner) {
+        this.owner = owner;
     }
 
     /**
@@ -162,7 +165,7 @@ public class Worker implements Validator, Comparable<Worker>, Serializable {
     public int compareTo(Worker worker) {
         int result = (int) (this.getSalary() - worker.getSalary());
         if (result == 0)
-            result = this.getId() - worker.getId();
+            result = (int) (this.getCoordinates().getX() - worker.getCoordinates().getX());
         return result;
     }
 

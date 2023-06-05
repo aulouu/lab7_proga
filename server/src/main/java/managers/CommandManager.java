@@ -35,14 +35,7 @@ public class CommandManager {
     public void addCommand(Collection<Command> commands) {
         this.commands.putAll(commands.stream()
                 .collect(Collectors.toMap(Command::getName, с -> с)));
-        commandManagerLogger.info("Добавлены команда ", commands);
-    }
-
-    /**
-     * @return коллекция команд
-     */
-    public Collection<Command> getCommands() {
-        return commands.values();
+        commandManagerLogger.info("Добавлены команды ", commands);
     }
 
     /**

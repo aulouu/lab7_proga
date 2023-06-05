@@ -70,9 +70,7 @@ public class LocationForm extends Forms<Location> {
      * @return название локации
      */
     public String askName() {
-        //while (true) {
         console.println("Введите название локации: ");
         return scanner.nextLine().trim();
-        //}
     }
 }

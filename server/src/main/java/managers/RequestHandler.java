@@ -12,9 +12,9 @@ public class RequestHandler {
     private CommandManager commandManager;
     private Request request;
 
-    public RequestHandler(CommandManager commandManager, Request request) {
-        this.commandManager = commandManager;
+    public RequestHandler(Request request, CommandManager commandManager) {
         this.request = request;
+        this.commandManager = commandManager;
     }
 
     public Response handle(Request request) {

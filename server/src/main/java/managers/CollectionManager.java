@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Deque;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
@@ -26,12 +25,14 @@ public class CollectionManager {
      */
     private LocalDateTime lastInitTime;
     private DatabaseManager databaseManager;
+    private DatabaseHandler databaseHandler;
     private Print console;
     static final Logger collectionManagerLogger = LoggerFactory.getLogger(CollectionManager.class);
 
-    public CollectionManager(DatabaseManager databaseManager) {
+    public CollectionManager(DatabaseManager databaseManager, DatabaseHandler databaseHandler) {
         this.lastInitTime = null;
         this.databaseManager = databaseManager;
+        this.databaseHandler = databaseHandler;
         this.console = new Console();
 
         loadCollection();
@@ -78,9 +79,10 @@ public class CollectionManager {
     private void loadCollection() {
         try {
             lastInitTime = LocalDateTime.now();
-            collection = databaseManager.readAll();
-            console.println("Коллекция загружена.");
-            collectionManagerLogger.info("Коллекция загружена.");
+            if (databaseHandler.connectToDatabase()) {
+                collection = databaseManager.readAll();
+                collectionManagerLogger.info("Коллекция загружена.");
+            } else collectionManagerLogger.error("Коллекция не может быть загружена.");
         } catch (SQLException exception) {
             collection = new ConcurrentLinkedDeque<>();
             console.printError("Коллекция не может быть загружена.");
@@ -133,14 +135,6 @@ public class CollectionManager {
     public void removeElement(Worker worker) {
         collection.remove(worker);
         collectionManagerLogger.info("Элемент удален.");
-    }
-
-    /**
-     * Удаляет элементы из коллекции
-     */
-    public void removeElements(Collection<Worker> collection) {
-        this.collection.removeAll(collection);
-        collectionManagerLogger.info("Все элементы коллекции удалены.");
     }
 
     /**

@@ -2,6 +2,7 @@ package managers;
 
 import console.Console;
 import console.Print;
+import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,20 +28,21 @@ public class DatabaseHandler {
         this.password = password;
         this.console = new Console();
 
-        connectToDatabase();
+        /*connectToDatabase();
         try {
             createTables();
         } catch (SQLException exception) {
-            console.printError("Таблицы уже существуют.");
-        }
+            databaseHandlerLogger.error("Таблицы уже существуют.");
+        }*/
     }
 
-    private void connectToDatabase() {
+    public boolean connectToDatabase() {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(url, user, password);
             console.println("Соединение с базой данных установлено.");
             databaseHandlerLogger.info("Соединение с базой данных установлено.");
+            return true;
         } catch (SQLException exception) {
             console.printError("Произошла ошибка при подключении к базе данных.");
             databaseHandlerLogger.error("Произошла ошибка при подключении к базе данных.");
@@ -48,6 +50,7 @@ public class DatabaseHandler {
             console.printError("Драйвер управления базой данных не найден.");
             databaseHandlerLogger.error("Драйвер управления базой данных не найден.");
         }
+        return false;
     }
 
     public void closeConnection() {

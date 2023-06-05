@@ -4,19 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="lala">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/ExecuteScriptCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/ExitCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/PingCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" afterDir="false" />
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="...">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/AddElementCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/AddIfMinCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/ClearCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/FilterByStatusCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/FilterStartsWithNameCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/HeadCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/HelpCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/InfoCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/LoginCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/RemoveByIDCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/RemoveGreaterCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/RemoveLowerCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/ShowCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/UpdateCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/PermissionDenied.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/UserExist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/UserNotFound.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/forms/LocationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/forms/LocationForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/AskUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/AskUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/models/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/models/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/work/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/work/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/PingCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/RequestHandler.java" afterDir="false" />
@@ -57,7 +78,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Алина/IdeaProjects/lab6_proga&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Алина/IdeaProjects/lab7_proga/server/src/main/java/commands&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -76,12 +97,13 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="commands" />
+      <recent name="exceptions" />
       <recent name="managers" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client">
-    <configuration name="client" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager" selected="Compound.Client + Server">
+    <configuration name="client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="client" />
       <option name="PROGRAM_PARAMETERS" value="localhost 6090" />
@@ -89,19 +111,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="server" type="Application" factoryName="Application" temporary="true">
+    <configuration name="server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.client" />
-        <item itemvalue="Application.server" />
-      </list>
-    </recent_temporary>
+    <configuration name="Client + Server" type="CompoundRunConfigurationType">
+      <toRun name="client" type="Application" />
+      <toRun name="server" type="Application" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.client" />
+      <item itemvalue="Application.server" />
+      <item itemvalue="Compound.Client + Server" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -120,6 +146,13 @@
       <workItem from="1685717541018" duration="2093000" />
       <workItem from="1685719949322" duration="62000" />
       <workItem from="1685720159215" duration="10165000" />
+      <workItem from="1685782203153" duration="5352000" />
+      <workItem from="1685787735741" duration="11683000" />
+      <workItem from="1685809653785" duration="11827000" />
+      <workItem from="1685824229911" duration="2852000" />
+      <workItem from="1685827805855" duration="894000" />
+      <workItem from="1685898701593" duration="7469000" />
+      <workItem from="1685949439914" duration="7355000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1685099737128</created>
@@ -170,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685531914384</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="...">
+      <created>1685782422515</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685782422515</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +236,7 @@
     <MESSAGE value=":)" />
     <MESSAGE value="]ъ" />
     <MESSAGE value="lala" />
-    <option name="LAST_COMMIT_MESSAGE" value="lala" />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
 </project>

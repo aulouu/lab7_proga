@@ -28,6 +28,8 @@ public class RuntimeManager {
     private final Client client;
     private static List<Path> Stack = new LinkedList<>();
     private User user = null;
+    private final String loginCommand = "login";
+    private final String registerCommand = "register";
 
     public RuntimeManager(Print console, Scanner scanner, Client client) {
         this.console = console;
@@ -60,21 +62,13 @@ public class RuntimeManager {
             try {
                 if (Objects.isNull(user)) {
                     Response responsetoUser = null;
-                    boolean isAuth = true;
                     do {
-                        if (!Objects.isNull(responsetoUser)) {
-                            console.println((isAuth)
-                                    ? "Неверный логин или пароль, попробуйте снова."
-                                    : "Логин уже существует, попробуйте снова.");
-                        }
                         AskUser askUser = new AskUser(console);
-                        isAuth = askUser.askAuth();
+                        String command = askUser.askAuth("У вас уже есть учетная запись?")
+                                ? loginCommand
+                                : registerCommand;
                         user = new AskUser(console).build();
-                        if (isAuth) {
-                            responsetoUser = client.sendAndAskResponse(new Request("ping", "", user));
-                        } else {
-                            responsetoUser = client.sendAndAskResponse(new Request("register", "", user));
-                        }
+                        responsetoUser = client.sendAndAskResponse(new Request(command, "", user));
                     } while (responsetoUser.getResponseStatus() != ResponseStatus.OK);
                 }
                 if (!scanner.hasNext()) throw new MustExit();

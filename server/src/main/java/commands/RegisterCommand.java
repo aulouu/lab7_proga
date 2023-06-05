@@ -7,11 +7,14 @@ import work.ResponseStatus;
 
 import java.sql.SQLException;
 
+/**
+ * Внутренняя команда
+ */
 public class RegisterCommand extends Command {
     private DatabaseManager databaseManager;
 
     public RegisterCommand(DatabaseManager databaseManager) {
-        super("register", " : зарегистрировать пользователя");
+        super("register", " : зарегистрировать пользователя (внутренняя команда)");
         this.databaseManager = databaseManager;
     }
 
@@ -24,9 +27,13 @@ public class RegisterCommand extends Command {
     public Response execute(Request request) {
         try {
             databaseManager.addUser(request.getUser());
+            //else throw new UserExist();
         } catch (SQLException exception) {
-            return new Response(ResponseStatus.AUTH_ERROR, "Такой пользователь уже существует, либо введен неправильй логин.");
-        }
-        return new Response(ResponseStatus.OK,"Вы успешно зарегистрированы");
+            commandLogger.error("Невозможно добавить пользователя.");
+            return new Response(ResponseStatus.AUTH_ERROR, "Пользователь уже существует.");
+        } /*catch (UserExist exception) {
+            return new Response(ResponseStatus.AUTH_ERROR, "Такой пользователь уже существует.");
+        }*/
+        return new Response(ResponseStatus.OK,"Пользователь успешно зарегистрирован.");
     }
 }

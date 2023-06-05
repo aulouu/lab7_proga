@@ -1,5 +1,9 @@
 package commands;
 
+import managers.DatabaseHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Objects;
 
 /**
@@ -9,6 +13,7 @@ import java.util.Objects;
 public abstract class Command implements CommandExecute {
     private final String name;
     private final String description;
+    protected Logger commandLogger = LoggerFactory.getLogger(this.getClass());
 
     public Command(String name, String description) {
         this.name = name;

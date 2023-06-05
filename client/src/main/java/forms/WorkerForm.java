@@ -36,11 +36,15 @@ public class WorkerForm extends Forms<Worker> {
         while (true) {
             console.println("Введите имя:");
             name = scanner.nextLine().trim();
-            if (name.isBlank()) {
-                console.printError("Имя не может быть пустым.");
-                if (ScannerManager.isFileMode()) return "";
-            } else {
-                return name;
+            try {
+                if (name.isBlank() && name.matches("[a-zA-Z]+")) {
+                    console.printError("Имя не может быть пустым.");
+                    if (ScannerManager.isFileMode()) return "";
+                } else {
+                    return name;
+                }
+            } catch (Exception exception) {
+                throw new RuntimeException(exception);
             }
         }
     }
