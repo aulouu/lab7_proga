@@ -11,7 +11,7 @@ public class App {
     private static final Print console = new Console();
     private static String url = "jdbc:postgresql://localhost:5433/studs";
     private static String user = "s373317";
-    private static String password = "lB4Kx4sgsYZDjzhZ";
+    private static String password = "";
 
     public static void main(String[] args) {
         if (args.length != 0) {
