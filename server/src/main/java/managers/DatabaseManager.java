@@ -29,7 +29,6 @@ public class DatabaseManager {
         preparedCheckUserStatement.setString(1, login);
         ResultSet resultSet = preparedCheckUserStatement.executeQuery();
         return resultSet.next();
-
     }
 
     public void addUser(User newUser) throws SQLException, UserExist {
@@ -61,7 +60,7 @@ public class DatabaseManager {
                 else throw new UserNotFound();
             }
         } catch (SQLException exception) {
-            databaseManagerLogger.error("Произошла ошибка при подтверждении пользователя.");
+            databaseManagerLogger.error("Произошла ошибка при авторизации пользователя.");
             throw exception;
         } finally {
             databaseHandler.closePreparedStatement(preparedVerifyUserStatement);
@@ -171,10 +170,10 @@ public class DatabaseManager {
             return true;
         } catch (SQLException exception) {
             databaseManagerLogger.error("Произошла ошибка при удалении элемента.");
+            return false;
         } finally {
             databaseHandler.closePreparedStatement(preparedRemoveObjectStatement);
         }
-        return false;
     }
 
     public boolean removeAllObjects(int id, User user) throws SQLException {
@@ -189,10 +188,10 @@ public class DatabaseManager {
             return true;
         } catch (SQLException exception) {
             databaseManagerLogger.error("Произошла ошибка при удалении всех объектов.");
+            return false;
         } finally {
             databaseHandler.closePreparedStatement(preparedRemoveAllObjectsStatement);
         }
-        return false;
     }
 
     public boolean updateObject(int id, Worker worker, User user) throws SQLException {
@@ -219,14 +218,14 @@ public class DatabaseManager {
             preparedUpdateObjectStatement.setString(16, user.getLogin());
 
             ResultSet resultSet = preparedUpdateObjectStatement.executeQuery();
-            resultSet.next();
-            return true;
+            return resultSet.next();
         } catch (SQLException exception) {
+            exception.printStackTrace();
             databaseManagerLogger.error("Произошла ошибка при обновлении объекта.");
+            return false;
         } finally {
             databaseHandler.closePreparedStatement(preparedUpdateObjectStatement);
         }
-        return false;
     }
 
 }

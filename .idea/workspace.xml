@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="лл">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/ConnectionDatabaseError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/WrongPort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" afterDir="false" />
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="new fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/AddIfMinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/AddIfMinCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/LoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/SQLRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/SQLRequests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +124,7 @@
       <workItem from="1685827805855" duration="894000" />
       <workItem from="1685898701593" duration="7469000" />
       <workItem from="1685949439914" duration="14552000" />
-      <workItem from="1686037499356" duration="13728000" />
+      <workItem from="1686037499356" duration="19007000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1685099737128</created>
@@ -242,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686039688652</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="new fix">
+      <created>1686053004315</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686053004315</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +271,7 @@
     <MESSAGE value="ококк" />
     <MESSAGE value="л" />
     <MESSAGE value="лл" />
-    <option name="LAST_COMMIT_MESSAGE" value="лл" />
+    <MESSAGE value="new fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="new fix" />
   </component>
 </project>

@@ -37,7 +37,7 @@ public class WorkerForm extends Forms<Worker> {
             console.println("Введите имя:");
             name = scanner.nextLine().trim();
             try {
-                if (name.isBlank() || name.matches("[A-Za-z]+")) {
+                if (name.isBlank()) {
                     console.printError("Имя не может быть пустым.");
                     if (ScannerManager.isFileMode()) return "";
                 } else {

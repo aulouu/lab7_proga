@@ -10,10 +10,6 @@ public class SQLRequests {
             SELECT * FROM users WHERE (login = ?);
             """;
 
-    public static final String LOGIN_USER = """
-            SELECT * FROM users WHERE (login = ?) AND (password = ?);
-            """;
-
     public static final String CREATE_TABLES = """      
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,

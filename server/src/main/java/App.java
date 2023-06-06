@@ -45,7 +45,7 @@ public class App {
 
         commandManager.addCommand(List.of(
                 new AddElementCommand(collectionManager, databaseManager),
-                new AddIfMinCommand(collectionManager,databaseManager),
+                new AddIfMinCommand(collectionManager, databaseManager),
                 new ClearCommand(collectionManager, databaseManager),
                 new ExecuteScriptCommand(),
                 new ExitCommand(),
@@ -65,6 +65,5 @@ public class App {
 
         Server server = new Server(port, connection_timeout, commandManager, databaseManager, databaseHandler);
         server.runServer();
-        //databaseHandler.closeConnection();
     }
 }

@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayDeque;
+import java.util.Collection;
 import java.util.Deque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -131,6 +133,16 @@ public class CollectionManager {
     public void removeElement(Worker worker) {
         collection.remove(worker);
         collectionManagerLogger.info("Элемент удален.");
+    }
+
+    /**
+     * Удаляет все элементы из коллекции
+     *
+     * @param collection коллекция
+     */
+    public void removeElements(Collection<Worker> collection) {
+        this.collection.removeAll(collection);
+        collectionManagerLogger.info("Все элементы коллекции удалены.");
     }
 
     /**
