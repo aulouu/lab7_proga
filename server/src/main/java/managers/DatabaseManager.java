@@ -7,7 +7,6 @@ import exceptions.UserNotFound;
 import models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import work.Response;
 import work.User;
 
 import java.sql.*;
