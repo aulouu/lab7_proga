@@ -1,7 +1,5 @@
 package managers;
 
-import console.Console;
-import console.Print;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -79,10 +77,10 @@ public class DatabaseHandler {
         try {
             connection.prepareStatement(SQLRequests.CREATE_TABLES).execute();
             databaseHandlerLogger.info("Таблицы успешно созданы.");
+            return true;
         } catch (SQLException exception) {
             databaseHandlerLogger.error("Произошла ошибка.");
             return false;
         }
-        return true;
     }
 }

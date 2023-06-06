@@ -94,7 +94,6 @@ public class Server {
         } catch (OpeningServer exception) {
             serverLogger.error("Сервер не может быть запущен.");
         }
-        //stop();
     }
 
     /**

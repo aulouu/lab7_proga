@@ -1,7 +1,5 @@
 package managers;
 
-import console.Console;
-import console.Print;
 import exceptions.UserExist;
 import exceptions.UserNotFound;
 import models.*;
@@ -38,6 +36,7 @@ public class DatabaseManager {
             if(this.checkUser(newUser.getLogin())) throw new UserExist();
             preparedAddUserStatement.setString(1, newUser.getLogin());
             preparedAddUserStatement.setString(2, PasswordHasher.hashPassword(newUser.getPassword()));
+            if (preparedAddUserStatement.executeUpdate() == 0) throw new SQLException();
             databaseManagerLogger.info("Пользователь " + newUser + "добавлен.");
         } catch (SQLException exception) {
             databaseManagerLogger.error("Произошла ошибка при добавлении пользователя.");
