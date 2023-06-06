@@ -3,6 +3,7 @@ package managers;
 import console.Console;
 import console.Print;
 import exceptions.ClosingSocket;
+import exceptions.ConnectionDatabaseError;
 import exceptions.ConnectionError;
 import exceptions.OpeningServer;
 import org.slf4j.Logger;
@@ -18,20 +19,20 @@ import java.util.concurrent.Executors;
 public class Server {
     private int port;
     private int soTimeout;
-    private Print console;
-    private boolean isStopped;
+    private volatile boolean isStopped;
     private ServerSocket serverSocket;
     private final CommandManager commandManager;
     private final DatabaseManager databaseManager;
-    private ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
+    private final DatabaseHandler databaseHandler;
+    private ExecutorService fixedThreadPool = Executors.newFixedThreadPool(4);
     static final Logger serverLogger = LoggerFactory.getLogger(Server.class);
 
-    public Server(int port, int soTimeout, CommandManager commandManager, DatabaseManager databaseManager) {
+    public Server(int port, int soTimeout, CommandManager commandManager, DatabaseManager databaseManager, DatabaseHandler databaseHandler) {
         this.port = port;
         this.soTimeout = soTimeout;
         this.commandManager = commandManager;
         this.databaseManager = databaseManager;
-        this.console = new Console();
+        this.databaseHandler = databaseHandler;
     }
 
     /**
@@ -39,16 +40,17 @@ public class Server {
      */
     private void open() throws OpeningServer {
         try {
+            if (!databaseHandler.connectToDatabase()) throw new ConnectionDatabaseError();
             serverLogger.info("Запуск сервера...");
             serverSocket = new ServerSocket(port);
             serverSocket.setSoTimeout(soTimeout);
             serverLogger.info("Сервер запущен успешно.");
+        } catch (ConnectionDatabaseError exception) {
+            serverLogger.error("База данных не подключена.");
         } catch (IllegalArgumentException exception) {
-            console.printError("Порт " + port + "недоступен.");
             serverLogger.error("Порт " + port + "недоступен.");
             throw new OpeningServer();
         } catch (IOException exception) {
-            console.printError("Ошибка при использовании порта " + port);
             serverLogger.error("Ошибка при использовании порта " + port);
             throw new OpeningServer();
         }
@@ -60,11 +62,9 @@ public class Server {
     private Socket connectToClient() throws ConnectionError, SocketTimeoutException {
         try {
             Socket clientSocket = serverSocket.accept();
-            console.println("Соединение с клиентом установлено успешно.");
             serverLogger.info("Соединение с клиентом установлено успешно.");
             return clientSocket;
         } catch (IOException exception) {
-            console.printError("Произошла ошибка при соединении с клиентом.");
             serverLogger.error("Произошла ошибка при соединении с клиентом.");
             throw new ConnectionError();
         }
@@ -76,24 +76,25 @@ public class Server {
     public void runServer() {
         try {
             open();
-            while (!isStopped()) {
-                try  {
-                    if (isStopped()) throw new ConnectionError();
-                    Socket clientSocket = connectToClient();
-                    fixedThreadPool.submit(new ConnectionManager(this, clientSocket, commandManager, databaseManager));
-                } catch (SocketTimeoutException ignored) {
-                } catch (ConnectionError exception) {
-                    if (!isStopped) {
-                        console.printError("Произошла ошибка при соединении с клиентом.");
-                        serverLogger.error("Произошла ошибка при соединении с клиентом.");
-                    } else break;
+            fixedThreadPool.submit(() -> {
+                while (!isStopped()) {
+                    try {
+                        if (isStopped()) throw new ConnectionError();
+                        Socket clientSocket = connectToClient();
+                        new Thread(new ConnectionManager(this, clientSocket, commandManager, databaseManager)).start();
+                    } catch (SocketTimeoutException ignored) {
+                    } catch (ConnectionError exception) {
+                        if (!isStopped) {
+                            serverLogger.error("Произошла ошибка при соединении с клиентом.");
+                        }
+                    }
                 }
-            }
+                stop();
+            });
         } catch (OpeningServer exception) {
-            console.printError("Сервер не может быть запущен.");
             serverLogger.error("Сервер не может быть запущен.");
         }
-        stop();
+        //stop();
     }
 
     /**
@@ -106,13 +107,10 @@ public class Server {
             isStopped = true;
             fixedThreadPool.shutdown();
             serverSocket.close();
-            console.println("Работа сервера успешно завершена.");
             serverLogger.info("Работа сервера успешно завершена.");
         } catch (ClosingSocket exception) {
-            console.printError("Нельзя завершить работу незапущенного сервера.");
             serverLogger.error("Нельзя завершить работу незапущенного сервера.");
         } catch (IOException exception) {
-            console.printError("Произошла ошибка при завершении работы сервера.");
             serverLogger.error("Произошла ошибка при завершении работы сервера.");
         }
     }

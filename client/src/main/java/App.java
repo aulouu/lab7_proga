@@ -13,7 +13,7 @@ public class App {
     private static boolean initializeConnectionAddress(String[] args) {
         try {
             if (args.length != 2)
-                throw new IllegalArgument("Хост и порт необходимо передать в формате host port в аргументы командной строки.");
+                throw new IllegalArgument("В аргументы командной строки необходимо передать host port.");
             host = args[0];
             port = Integer.parseInt(args[1]);
             if (port < 0) throw new IllegalArgument("Порт не может быть отрицательным.");
@@ -27,7 +27,6 @@ public class App {
     public static void main(String[] args) {
         if (!initializeConnectionAddress(args)) return;
         Client client = new Client(host, port, 10000, 5, console);
-        //client.connectToServer();
         new RuntimeManager(console, new Scanner(System.in), client).runTime();
     }
 }

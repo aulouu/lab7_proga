@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
 import java.util.Deque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -26,14 +25,12 @@ public class CollectionManager {
     private LocalDateTime lastInitTime;
     private DatabaseManager databaseManager;
     private DatabaseHandler databaseHandler;
-    private Print console;
     static final Logger collectionManagerLogger = LoggerFactory.getLogger(CollectionManager.class);
 
     public CollectionManager(DatabaseManager databaseManager, DatabaseHandler databaseHandler) {
         this.lastInitTime = null;
         this.databaseManager = databaseManager;
         this.databaseHandler = databaseHandler;
-        this.console = new Console();
 
         loadCollection();
     }
@@ -85,7 +82,6 @@ public class CollectionManager {
             } else collectionManagerLogger.error("Коллекция не может быть загружена.");
         } catch (SQLException exception) {
             collection = new ConcurrentLinkedDeque<>();
-            console.printError("Коллекция не может быть загружена.");
             collectionManagerLogger.error("Коллекция не может быть загружена.");
         }
     }

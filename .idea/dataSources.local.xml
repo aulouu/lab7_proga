@@ -15,6 +15,10 @@
           </node>
         </introspection-scope>
       </schema-mapping>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>4ce7159e-fde3-4146-9ef5-e76bb0ffcb1c</ssh-config-id>
+      </ssh-properties>
     </data-source>
   </component>
 </project>

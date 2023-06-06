@@ -28,13 +28,11 @@ public class LoginCommand extends Command {
     public Response execute(Request request) {
         try {
             databaseManager.verifyUser(request.getUser());
-                //return new Response(ResponseStatus.OK,"Вы авторизированы.");
-            //else throw new UserNotFound();
         } catch (SQLException exception) {
             return new Response(ResponseStatus.ERROR, "Произошла ошибка при обращении к базе данных.");
-        } /*catch (UserNotFound exception) {
+        } catch (UserNotFound exception) {
             return new Response(ResponseStatus.AUTH_ERROR, "Неправильные имя пользователя или пароль.");
-        }*/
+        }
         return new Response(ResponseStatus.OK,"Пользователь авторизирован.");
     }
 }

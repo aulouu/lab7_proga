@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.UserExist;
 import managers.DatabaseManager;
 import work.Request;
 import work.Response;
@@ -27,13 +28,11 @@ public class RegisterCommand extends Command {
     public Response execute(Request request) {
         try {
             databaseManager.addUser(request.getUser());
-            //else throw new UserExist();
         } catch (SQLException exception) {
-            commandLogger.error("Невозможно добавить пользователя.");
-            return new Response(ResponseStatus.AUTH_ERROR, "Пользователь уже существует.");
-        } /*catch (UserExist exception) {
+            return new Response(ResponseStatus.ERROR, "Произошла ошибка при обращении к базе данных.");
+        } catch (UserExist exception) {
             return new Response(ResponseStatus.AUTH_ERROR, "Такой пользователь уже существует.");
-        }*/
+        }
         return new Response(ResponseStatus.OK,"Пользователь успешно зарегистрирован.");
     }
 }

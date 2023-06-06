@@ -46,7 +46,7 @@ public class RuntimeManager {
                     console.println(response.getResponse() + "\n" + response.getCollection().toString());
                 }
             }
-            case ERROR -> console.printError(response.getResponse());
+            case ERROR, AUTH_ERROR -> console.printError(response.getResponse());
             case WRONG_ARGUMENTS -> console.printError("Неверное использование команды.");
             default -> {
             }
@@ -69,6 +69,7 @@ public class RuntimeManager {
                                 : registerCommand;
                         user = new AskUser(console).build();
                         responsetoUser = client.sendAndAskResponse(new Request(command, "", user));
+                        printResponse(responsetoUser);
                     } while (responsetoUser.getResponseStatus() != ResponseStatus.OK);
                 }
                 if (!scanner.hasNext()) throw new MustExit();

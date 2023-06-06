@@ -4,12 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="ок">
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="лл">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/ConnectionDatabaseError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/WrongPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/008f75dc-73a9-4ee1-aef6-3123b649865a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/forms/WorkerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManagerPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/AddIfMinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/AddIfMinCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/LoginCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/RegisterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,7 +83,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Compound.Client + Server">
+  <component name="RunManager" selected="Compound.run">
     <configuration name="client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="client" />
@@ -82,11 +95,12 @@
     <configuration name="server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
+      <option name="PROGRAM_PARAMETERS" value="6090 localhost lB4Kx4sgsYZDjzhZ" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Client + Server" type="CompoundRunConfigurationType">
+    <configuration name="run" type="CompoundRunConfigurationType">
       <toRun name="client" type="Application" />
       <toRun name="server" type="Application" />
       <method v="2" />
@@ -94,7 +108,7 @@
     <list>
       <item itemvalue="Application.client" />
       <item itemvalue="Application.server" />
-      <item itemvalue="Compound.Client + Server" />
+      <item itemvalue="Compound.run" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -121,7 +135,7 @@
       <workItem from="1685827805855" duration="894000" />
       <workItem from="1685898701593" duration="7469000" />
       <workItem from="1685949439914" duration="14552000" />
-      <workItem from="1686037499356" duration="1847000" />
+      <workItem from="1686037499356" duration="13728000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1685099737128</created>
@@ -193,7 +207,42 @@
       <option name="project" value="LOCAL" />
       <updated>1686037532226</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="окок">
+      <created>1686039388749</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1686039388749</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ококк">
+      <created>1686039578847</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686039578847</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ококк">
+      <created>1686039607787</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1686039607787</updated>
+    </task>
+    <task id="LOCAL-00014" summary="л">
+      <created>1686039641127</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1686039641127</updated>
+    </task>
+    <task id="LOCAL-00015" summary="лл">
+      <created>1686039688652</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686039688652</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +271,10 @@
     <MESSAGE value="..." />
     <MESSAGE value="кк" />
     <MESSAGE value="ок" />
-    <option name="LAST_COMMIT_MESSAGE" value="ок" />
+    <MESSAGE value="окок" />
+    <MESSAGE value="ококк" />
+    <MESSAGE value="л" />
+    <MESSAGE value="лл" />
+    <option name="LAST_COMMIT_MESSAGE" value="лл" />
   </component>
 </project>

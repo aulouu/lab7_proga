@@ -38,11 +38,11 @@ public class AddIfMinCommand extends Command {
             if (Objects.isNull(request.getObject())) {
                 return new Response(ResponseStatus.ASK_OBJECT, "Для команды " + this.getName() + " требуется объект.");
             }
-            Worker element = databaseManager.addObject(request.getObject(), request.getUser());
-            if (element.compareTo(Objects.requireNonNull(collectionManager.getCollection().stream()
+            if (request.getObject().compareTo(Objects.requireNonNull(collectionManager.getCollection().stream()
                     .filter(Objects::nonNull)
                     .min(Worker::compareTo)
                     .orElse(null))) >= 1) {
+                Worker element = databaseManager.addObject(request.getObject(), request.getUser());
                 collectionManager.addElement(element);
                 return new Response(ResponseStatus.OK, "Элемент успешно добавлен.");
             } else {

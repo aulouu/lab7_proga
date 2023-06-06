@@ -15,13 +15,12 @@ import java.util.Deque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class DatabaseManager {
+
     private DatabaseHandler databaseHandler;
-    private Print console;
     static final Logger databaseManagerLogger = LoggerFactory.getLogger(DatabaseManager.class);
 
     public DatabaseManager(DatabaseHandler databaseHandler) {
         this.databaseHandler = databaseHandler;
-        this.console = new Console();
     }
 
     public boolean checkUser(String login) throws SQLException {
@@ -33,25 +32,23 @@ public class DatabaseManager {
 
     }
 
-    public void addUser(User newUser) throws SQLException {
+    public void addUser(User newUser) throws SQLException, UserExist {
         PreparedStatement preparedAddUserStatement = null;
         try {
             preparedAddUserStatement = databaseHandler.getPreparedStatement(SQLRequests.ADD_USER);
-            if (this.checkUser(newUser.getLogin())) throw new UserExist();
+            if(this.checkUser(newUser.getLogin())) throw new UserExist();
             preparedAddUserStatement.setString(1, newUser.getLogin());
             preparedAddUserStatement.setString(2, PasswordHasher.hashPassword(newUser.getPassword()));
-            if (preparedAddUserStatement.executeUpdate() == 0) throw new SQLException();
             databaseManagerLogger.info("Пользователь " + newUser + "добавлен.");
-        } catch (UserExist exception) {
-            console.printError("Такой пользователь уже существует.");
         } catch (SQLException exception) {
-            console.printError("Произошла ошибка при добавлении пользователя.");
+            databaseManagerLogger.error("Произошла ошибка при добавлении пользователя.");
+            throw exception;
         } finally {
             databaseHandler.closePreparedStatement(preparedAddUserStatement);
         }
     }
 
-    public void verifyUser(User user) throws SQLException {
+    public void verifyUser(User user) throws SQLException, UserNotFound {
         PreparedStatement preparedVerifyUserStatement = null;
         try {
             preparedVerifyUserStatement = databaseHandler.getPreparedStatement(SQLRequests.GET_USER);
@@ -64,9 +61,8 @@ public class DatabaseManager {
                 else throw new UserNotFound();
             }
         } catch (SQLException exception) {
-            console.printError("Произошла ошибка при подтверждении пользователя.");
-        } catch (UserNotFound exception) {
-            console.printError("Неправильные имя пользователя или пароль.");
+            databaseManagerLogger.error("Произошла ошибка при подтверждении пользователя.");
+            throw exception;
         } finally {
             databaseHandler.closePreparedStatement(preparedVerifyUserStatement);
         }
@@ -103,11 +99,10 @@ public class DatabaseManager {
                         ),
                         resultSet.getString("owner")
                 ));
-                databaseManagerLogger.info("Коллекция загружена.");
-                return collection;
             }
+            return collection;
         } catch (SQLException exception) {
-            console.printError("Произошла ошибка при загрузке коллекции из таблиц бд.");
+            databaseManagerLogger.error("Произошла ошибка при загрузке коллекции из таблиц бд.");
         } finally {
             databaseHandler.closePreparedStatement(preparedReadAllStatement);
         }
@@ -142,7 +137,7 @@ public class DatabaseManager {
                 databaseManagerLogger.error("Новый элемент не добавлен в коллекцию.");
             } else {
                 newWorker = new Worker(
-                        worker.getId(),
+                        resultSet.getInt(1),
                         worker.getName(),
                         worker.getCoordinates(),
                         creationTime,
@@ -156,8 +151,8 @@ public class DatabaseManager {
                 databaseManagerLogger.info("Новый элемент добавлен в коллекцию.");
             }
         } catch (SQLException exception) {
-            exception.printStackTrace();
-            console.printError("Произошла ошибка при добавлении нового элемент в таблицу.");
+            databaseManagerLogger.error("Произошла ошибка при добавлении нового элемент в таблицу.");
+            throw exception;
         } finally {
             databaseHandler.closePreparedStatement(preparedAddObjectStatement);
         }
@@ -175,7 +170,7 @@ public class DatabaseManager {
             databaseManagerLogger.info("Элемент удален.");
             return true;
         } catch (SQLException exception) {
-            console.printError("Произошла ошибка при удалении элемента.");
+            databaseManagerLogger.error("Произошла ошибка при удалении элемента.");
         } finally {
             databaseHandler.closePreparedStatement(preparedRemoveObjectStatement);
         }
@@ -193,7 +188,7 @@ public class DatabaseManager {
             databaseManagerLogger.info("Объекты, принадлежащие " + user.getLogin() + " удалены.");
             return true;
         } catch (SQLException exception) {
-            console.printError("Произошла ошибка при удалении всех объектов.");
+            databaseManagerLogger.error("Произошла ошибка при удалении всех объектов.");
         } finally {
             databaseHandler.closePreparedStatement(preparedRemoveAllObjectsStatement);
         }
@@ -227,7 +222,7 @@ public class DatabaseManager {
             resultSet.next();
             return true;
         } catch (SQLException exception) {
-            console.printError("Произошла ошибка при обновлении объекта.");
+            databaseManagerLogger.error("Произошла ошибка при обновлении объекта.");
         } finally {
             databaseHandler.closePreparedStatement(preparedUpdateObjectStatement);
         }
