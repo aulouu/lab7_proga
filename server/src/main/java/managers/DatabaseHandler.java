@@ -14,6 +14,8 @@ import java.util.Properties;
 
 public class DatabaseHandler {
 
+    public static final String USER_TABLE = "";
+
     private final String JDBC_DRIVER = "org.postgresql.Driver";
     private String url;
     private String user;

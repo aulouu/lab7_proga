@@ -214,11 +214,11 @@ public class DatabaseManager {
             preparedUpdateObjectStatement.setTimestamp(5, Timestamp.valueOf(creationTime));
             preparedUpdateObjectStatement.setLong(6, worker.getSalary());
             preparedUpdateObjectStatement.setDate(7, Date.valueOf(worker.getStartDate()));
-            preparedUpdateObjectStatement.setString(8, worker.getPosition().name());
-            preparedUpdateObjectStatement.setString(9, worker.getStatus().name());
+            preparedUpdateObjectStatement.setString(8, worker.getPosition().toString());
+            preparedUpdateObjectStatement.setString(9, worker.getStatus().toString());
             preparedUpdateObjectStatement.setInt(10, worker.getPerson().getHeight());
-            preparedUpdateObjectStatement.setString(11, worker.getPerson().getEyeColor().name());
-            preparedUpdateObjectStatement.setString(12, worker.getPerson().getNationality().name());
+            preparedUpdateObjectStatement.setString(11, worker.getPerson().getEyeColor().toString());
+            preparedUpdateObjectStatement.setString(12, worker.getPerson().getNationality().toString());
             preparedUpdateObjectStatement.setInt(13, worker.getPerson().getLocation().getX());
             preparedUpdateObjectStatement.setFloat(14, worker.getPerson().getLocation().getY());
             preparedUpdateObjectStatement.setString(15, worker.getPerson().getLocation().getName());
