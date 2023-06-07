@@ -63,7 +63,7 @@ public class App {
                 new UpdateCommand(collectionManager, databaseManager)
         ));
 
-        Server server = new Server(port, connection_timeout, commandManager, databaseManager, databaseHandler);
+        Server server = new Server(port, /*connection_timeout,*/ commandManager, databaseManager, databaseHandler);
         server.runServer();
     }
 }

@@ -54,7 +54,8 @@ public class DatabaseManager {
             ResultSet resultSet = preparedVerifyUserStatement.executeQuery();
             if (resultSet.next()) {
                 String pass = PasswordHasher.hashPassword(user.getPassword());
-                if(pass.equals(resultSet.getString("password")))
+                String login = user.getLogin();
+                if(pass.equals(resultSet.getString("password")) /*&& login.equals(resultSet.getString("login"))*/)
                     databaseManagerLogger.info("Пользователь " + user + "авторизирован.");
                 else throw new UserNotFound();
             }

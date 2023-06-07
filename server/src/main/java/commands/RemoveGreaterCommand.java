@@ -35,26 +35,25 @@ public class RemoveGreaterCommand extends Command {
     @Override
     public Response execute(Request request) throws IllegalArgument {
         if (!request.getArgs().isBlank()) throw new IllegalArgument();
-        if (Objects.isNull(request.getObject())) {
-            return new Response(ResponseStatus.ASK_OBJECT, "Для команды " + this.getName() + " требуется объект.");
+        try {
+            if (Objects.isNull(request.getObject())) {
+                return new Response(ResponseStatus.ASK_OBJECT, "Для команды " + this.getName() + " требуется объект.");
+            }
+            Worker element = request.getObject();
+            Collection<Worker> remove = collectionManager.getCollection().stream()
+                    .filter(Objects::nonNull)
+                    .filter(worker -> worker.compareTo(element) >= 1)
+                    .filter(worker -> worker.getOwner().equals(request.getUser().getLogin()))
+                    .toList();
+            for (Worker object : remove) {
+                databaseManager.removeObject(object.getId(), request.getUser());
+                collectionManager.removeElement(object);
+            }
+            if (remove.isEmpty()) {
+                return new Response(ResponseStatus.ERROR, "Нет элементов, превышающие заданный.");
+            } else return new Response(ResponseStatus.OK, "Элементы, превышающие заданный, удалены.");
+        } catch (SQLException exception) {
+            return new Response(ResponseStatus.ERROR, "Произошла ошибка при обращении к базе данных.");
         }
-        Worker element = request.getObject();
-        Collection<Worker> remove = collectionManager.getCollection().stream()
-                .filter(Objects::nonNull)
-                .filter(worker -> worker.compareTo(element) >= 1)
-                .filter(worker -> worker.getOwner().equals(request.getUser().getLogin()))
-                .filter(el -> {
-                    try {
-                        return databaseManager.removeObject(el.getId(), request.getUser());
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
-                .toList();
-        for (Worker object : remove)
-            collectionManager.removeElement(object);
-        if (remove.isEmpty()) {
-            return new Response(ResponseStatus.ERROR, "Нет элементов, превышающие заданный.");
-        } else return new Response(ResponseStatus.OK, "Элементы, превышающие заданный, удалены.");
     }
 }

@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 
 public class Server {
     private int port;
-    private int soTimeout;
+    //private int soTimeout;
     private volatile boolean isStopped;
     private ServerSocket serverSocket;
     private final CommandManager commandManager;
@@ -27,9 +27,9 @@ public class Server {
     private ExecutorService fixedThreadPool = Executors.newFixedThreadPool(4);
     static final Logger serverLogger = LoggerFactory.getLogger(Server.class);
 
-    public Server(int port, int soTimeout, CommandManager commandManager, DatabaseManager databaseManager, DatabaseHandler databaseHandler) {
+    public Server(int port, /*int soTimeout,*/ CommandManager commandManager, DatabaseManager databaseManager, DatabaseHandler databaseHandler) {
         this.port = port;
-        this.soTimeout = soTimeout;
+        //this.soTimeout = soTimeout;
         this.commandManager = commandManager;
         this.databaseManager = databaseManager;
         this.databaseHandler = databaseHandler;
@@ -43,7 +43,7 @@ public class Server {
             if (!databaseHandler.connectToDatabase()) throw new ConnectionDatabaseError();
             serverLogger.info("Запуск сервера...");
             serverSocket = new ServerSocket(port);
-            serverSocket.setSoTimeout(soTimeout);
+            //serverSocket.setSoTimeout(soTimeout);
             serverLogger.info("Сервер запущен успешно.");
         } catch (ConnectionDatabaseError exception) {
             serverLogger.error("База данных не подключена.");

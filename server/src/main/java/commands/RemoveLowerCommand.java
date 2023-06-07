@@ -1,6 +1,7 @@
 package commands;
 
 import exceptions.IllegalArgument;
+import exceptions.PermissionDenied;
 import managers.CollectionManager;
 import managers.DatabaseManager;
 import models.Worker;
@@ -41,21 +42,18 @@ public class RemoveLowerCommand extends Command {
                     .filter(Objects::nonNull)
                     .filter(worker -> worker.getId() < id)
                     .filter(worker -> worker.getOwner().equals(request.getUser().getLogin()))
-                    .filter(el -> {
-                        try {
-                            return databaseManager.removeObject(el.getId(), request.getUser());
-                        } catch (SQLException e) {
-                            throw new RuntimeException(e);
-                        }
-                    })
                     .toList();
-            for (Worker object : remove)
+            for (Worker object : remove) {
+                databaseManager.removeObject(object.getId(), request.getUser());
                 collectionManager.removeElement(object);
+            }
             if (remove.isEmpty()) {
                 return new Response(ResponseStatus.ERROR, "Нет элементов, у которых ID меньше, чем заданный.");
             } else return new Response(ResponseStatus.OK, "Элементы, ID которых меньше, чем заданный, удалены.");
         } catch (NumberFormatException exception) {
             return new Response(ResponseStatus.ERROR, "ID должно быть числом типа integer.");
+        } catch (SQLException exception) {
+            return new Response(ResponseStatus.ERROR, "Произошла ошибка при обращении к базе данных.");
         }
     }
 }
