@@ -12,6 +12,7 @@ public class DatabaseHandler {
     private String user;
     private String password;
     private Connection connection;
+    public boolean isConnect = false;
     static final Logger databaseHandlerLogger = LoggerFactory.getLogger(DatabaseHandler.class);
 
     public DatabaseHandler(String url, String user, String password) {
@@ -19,12 +20,13 @@ public class DatabaseHandler {
         this.user = user;
         this.password = password;
 
-        /*connectToDatabase();
         try {
-            createTables();
+            this.connectToDatabase();
+            if(isConnect)
+                this.createTables();
         } catch (SQLException exception) {
             databaseHandlerLogger.error("Таблицы уже существуют.");
-        }*/
+        }
     }
 
     public boolean connectToDatabase() {
@@ -32,11 +34,14 @@ public class DatabaseHandler {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(url, user, password);
             databaseHandlerLogger.info("Соединение с базой данных установлено.");
+            isConnect = true;
             return true;
         } catch (SQLException exception) {
             databaseHandlerLogger.error("Произошла ошибка при подключении к базе данных.");
+            isConnect = false;
         } catch (ClassNotFoundException exception) {
             databaseHandlerLogger.error("Драйвер управления базой данных не найден.");
+            isConnect = false;
         }
         return false;
     }
@@ -73,14 +78,8 @@ public class DatabaseHandler {
         }
     }
 
-    public boolean createTables() throws SQLException {
-        try {
+    public void createTables() throws SQLException {
             connection.prepareStatement(SQLRequests.CREATE_TABLES).execute();
             databaseHandlerLogger.info("Таблицы успешно созданы.");
-            return true;
-        } catch (SQLException exception) {
-            databaseHandlerLogger.error("Произошла ошибка.");
-            return false;
-        }
     }
 }

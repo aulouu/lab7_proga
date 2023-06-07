@@ -21,10 +21,12 @@ import java.util.stream.Collectors;
 public class CommandManager {
     private final HashMap<String, Command> commands = new HashMap<>();
     private final DatabaseManager databaseManager;
+    private final DatabaseHandler databaseHandler;
     static final Logger commandManagerLogger = LoggerFactory.getLogger(CommandManager.class);
 
-    public CommandManager(DatabaseManager databaseManager) {
+    public CommandManager(DatabaseManager databaseManager, DatabaseHandler databaseHandler) {
         this.databaseManager = databaseManager;
+        this.databaseHandler = databaseHandler;
     }
 
     /**
@@ -33,9 +35,11 @@ public class CommandManager {
      * @param commands комманды
      */
     public void addCommand(Collection<Command> commands) {
-        this.commands.putAll(commands.stream()
-                .collect(Collectors.toMap(Command::getName, с -> с)));
-        commandManagerLogger.info("Добавлены команды ", commands);
+        if (databaseHandler.isConnect) {
+            this.commands.putAll(commands.stream()
+                    .collect(Collectors.toMap(Command::getName, с -> с)));
+            commandManagerLogger.info("Добавлены команды ", commands);
+        }
     }
 
     /**

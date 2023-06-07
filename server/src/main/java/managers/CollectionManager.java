@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
@@ -66,19 +67,12 @@ public class CollectionManager {
     }
 
     /**
-     * Очищает коллекцию
-     */
-    public void clear() {
-        this.collection.clear();
-    }
-
-    /**
      * Загружает коллекцию из файла
      */
     private void loadCollection() {
         try {
             lastInitTime = LocalDateTime.now();
-            if (databaseHandler.connectToDatabase()) {
+            if (databaseHandler.isConnect) {
                 collection = databaseManager.readAll();
                 collectionManagerLogger.info("Коллекция загружена.");
             } else collectionManagerLogger.error("Коллекция не может быть загружена.");
@@ -136,13 +130,11 @@ public class CollectionManager {
     }
 
     /**
-     * Удаляет все элементы из коллекции
-     *
-     * @param collection коллекция
+     * Удаляет элементы из коллекции
+     * @param deletedIds элементы
      */
-    public void removeElements(Collection<Worker> collection) {
-        this.collection.removeAll(collection);
-        collectionManagerLogger.info("Все элементы коллекции удалены.");
+    public void removeElements(List<Integer> deletedIds) {
+        deletedIds.forEach((id) -> this.collection.remove(this.getById(id)));
     }
 
     /**

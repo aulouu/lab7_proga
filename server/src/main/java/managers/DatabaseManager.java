@@ -10,6 +10,8 @@ import work.User;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.Deque;
+import java.util.List;
+import java.util.NavigableSet;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class DatabaseManager {
@@ -33,7 +35,7 @@ public class DatabaseManager {
         PreparedStatement preparedAddUserStatement = null;
         try {
             preparedAddUserStatement = databaseHandler.getPreparedStatement(SQLRequests.ADD_USER);
-            if(this.checkUser(newUser.getLogin())) throw new UserExist();
+            if (this.checkUser(newUser.getLogin())) throw new UserExist();
             preparedAddUserStatement.setString(1, newUser.getLogin());
             preparedAddUserStatement.setString(2, PasswordHasher.hashPassword(newUser.getPassword()));
             if (preparedAddUserStatement.executeUpdate() == 0) throw new SQLException();
@@ -55,7 +57,7 @@ public class DatabaseManager {
             if (resultSet.next()) {
                 String pass = PasswordHasher.hashPassword(user.getPassword());
                 String login = user.getLogin();
-                if(pass.equals(resultSet.getString("password")) /*&& login.equals(resultSet.getString("login"))*/)
+                if (pass.equals(resultSet.getString("password")) && login.equals(resultSet.getString("login")))
                     databaseManagerLogger.info("Пользователь " + user + "авторизирован.");
                 else throw new UserNotFound();
             }
@@ -176,18 +178,19 @@ public class DatabaseManager {
         }
     }
 
-    public boolean removeAllObjects(int id, User user) throws SQLException {
+    public boolean removeAllObjects(List<Integer> ids, User user) throws SQLException {
         PreparedStatement preparedRemoveAllObjectsStatement = null;
         try {
-            preparedRemoveAllObjectsStatement = databaseHandler.getPreparedStatement(SQLRequests.DELETE_OBJECT);
-            preparedRemoveAllObjectsStatement.setInt(1, id);
-            preparedRemoveAllObjectsStatement.setString(2, user.getLogin());
-            ResultSet resultSet = preparedRemoveAllObjectsStatement.executeQuery();
-            resultSet.next();
+            for (Integer id : ids) {
+                preparedRemoveAllObjectsStatement = databaseHandler.getPreparedStatement(SQLRequests.DELETE_OBJECT);
+                preparedRemoveAllObjectsStatement.setInt(1, id);
+                preparedRemoveAllObjectsStatement.setString(2, user.getLogin());
+                ResultSet resultSet = preparedRemoveAllObjectsStatement.executeQuery();
+            }
             databaseManagerLogger.info("Объекты, принадлежащие " + user.getLogin() + " удалены.");
             return true;
         } catch (SQLException exception) {
-            databaseManagerLogger.error("Произошла ошибка при удалении всех объектов.");
+            databaseManagerLogger.error("Произошла ошибка при удалении объектов.");
             return false;
         } finally {
             databaseHandler.closePreparedStatement(preparedRemoveAllObjectsStatement);

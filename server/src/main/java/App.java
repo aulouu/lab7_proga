@@ -41,7 +41,7 @@ public class App {
         DatabaseHandler databaseHandler = new DatabaseHandler(url, user, password);
         DatabaseManager databaseManager = new DatabaseManager(databaseHandler);
         CollectionManager collectionManager = new CollectionManager(databaseManager, databaseHandler);
-        CommandManager commandManager = new CommandManager(databaseManager);
+        CommandManager commandManager = new CommandManager(databaseManager, databaseHandler);
 
         commandManager.addCommand(List.of(
                 new AddElementCommand(collectionManager, databaseManager),

@@ -40,13 +40,13 @@ public class Server {
      */
     private void open() throws OpeningServer {
         try {
-            if (!databaseHandler.connectToDatabase()) throw new ConnectionDatabaseError();
+            if (!databaseHandler.isConnect) throw new ConnectionDatabaseError();
             serverLogger.info("Запуск сервера...");
             serverSocket = new ServerSocket(port);
             //serverSocket.setSoTimeout(soTimeout);
             serverLogger.info("Сервер запущен успешно.");
         } catch (ConnectionDatabaseError exception) {
-            serverLogger.error("База данных не подключена.");
+            serverLogger.error("База данных не подключена, попробуйте еще раз.");
         } catch (IllegalArgumentException exception) {
             serverLogger.error("Порт " + port + "недоступен.");
             throw new OpeningServer();

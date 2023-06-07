@@ -45,9 +45,7 @@ public class AddIfMinCommand extends Command {
                 Worker element = databaseManager.addObject(request.getObject(), request.getUser());
                 collectionManager.addElement(element);
                 return new Response(ResponseStatus.OK, "Элемент успешно добавлен.");
-            } else {
-                return new Response(ResponseStatus.ERROR, "Элемент не соответствует условиям команды.");
-            }
+            } else return new Response(ResponseStatus.ERROR, "Элемент не соответствует условиям команды.");
         } catch (SQLException exception) {
             return new Response(ResponseStatus.ERROR, "Произошла ошибка при обращении к базе данных.");
         }
