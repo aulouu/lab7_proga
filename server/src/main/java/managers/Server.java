@@ -47,6 +47,7 @@ public class Server {
             serverLogger.info("Сервер запущен успешно.");
         } catch (ConnectionDatabaseError exception) {
             serverLogger.error("База данных не подключена, попробуйте еще раз.");
+            System.exit(1);
         } catch (IllegalArgumentException exception) {
             serverLogger.error("Порт " + port + "недоступен.");
             throw new OpeningServer();

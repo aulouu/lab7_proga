@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="zaeba">
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="lol">
+      <change afterPath="$PROJECT_DIR$/db.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/AddIfMinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/AddIfMinCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/ClearCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/ClearCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +46,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "D:/prog-lab7",
+    "last_opened_file_path": "C:/Users/Алина/IdeaProjects/lab7_proga",
     "nodejs_package_manager_path": "npm"
   },
   "keyToStringList": {
@@ -59,9 +57,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\commands" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\managers" />
-      <recent name="C:\Users\Алина\IdeaProjects\lab7_proga" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\console" />
       <recent name="C:\Users\Алина\IdeaProjects\lab7_proga\server\src\main\java\exceptions" />
     </key>
@@ -84,7 +82,6 @@
     <configuration name="server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
-      <option name="PROGRAM_PARAMETERS" value="6090 localhost lB4Kx4sgsYZDjzhZ" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -126,7 +123,10 @@
       <workItem from="1685949439914" duration="14552000" />
       <workItem from="1686037499356" duration="19492000" />
       <workItem from="1686082154173" duration="3814000" />
-      <workItem from="1686132543493" duration="7582000" />
+      <workItem from="1686132543493" duration="8411000" />
+      <workItem from="1686158527243" duration="1399000" />
+      <workItem from="1686210876011" duration="3003000" />
+      <workItem from="1686215419456" duration="2314000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1685099737128</created>
@@ -261,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686136402195</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="lol">
+      <created>1686140511659</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686140511659</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,6 +305,7 @@
     <MESSAGE value="--" />
     <MESSAGE value="zaeb" />
     <MESSAGE value="zaeba" />
-    <option name="LAST_COMMIT_MESSAGE" value="zaeba" />
+    <MESSAGE value="lol" />
+    <option name="LAST_COMMIT_MESSAGE" value="lol" />
   </component>
 </project>

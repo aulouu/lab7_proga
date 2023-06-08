@@ -3,23 +3,22 @@ package managers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class DatabaseHandler {
 
     private final String JDBC_DRIVER = "org.postgresql.Driver";
-    private String url;
-    private String user;
-    private String password;
+    public static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/studs";
+    public static final String DATABASE_URL_HELIOS = "jdbc:postgresql://pg:5432/studs";
+    public static final String DATABASE_CONFIG = "C:\\Users\\Алина\\IdeaProjects\\lab7_proga\\db.cfg";
     private Connection connection;
     public boolean isConnect = false;
     static final Logger databaseHandlerLogger = LoggerFactory.getLogger(DatabaseHandler.class);
 
-    public DatabaseHandler(String url, String user, String password) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
-
+    public DatabaseHandler() {
         try {
             this.connectToDatabase();
             if(isConnect)
@@ -29,21 +28,29 @@ public class DatabaseHandler {
         }
     }
 
-    public boolean connectToDatabase() {
+    public void connectToDatabase() {
+        Properties properties = null;
         try {
+            properties = new Properties();
+            properties.load(new FileInputStream(DATABASE_CONFIG));
             Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(DATABASE_URL, properties);
             databaseHandlerLogger.info("Соединение с базой данных установлено.");
             isConnect = true;
-            return true;
         } catch (SQLException exception) {
-            databaseHandlerLogger.error("Произошла ошибка при подключении к базе данных.");
-            isConnect = false;
+            try {
+                connection = DriverManager.getConnection(DATABASE_URL_HELIOS, properties);
+            } catch (SQLException ex) {
+                databaseHandlerLogger.error("Произошла ошибка при подключении к базе данных.");
+                isConnect = false;
+            }
         } catch (ClassNotFoundException exception) {
             databaseHandlerLogger.error("Драйвер управления базой данных не найден.");
             isConnect = false;
+        } catch (IOException exception) {
+           databaseHandlerLogger.error("Ошибка в чтении конфинга базы данных.");
+           isConnect = false;
         }
-        return false;
     }
 
     public void closeConnection() {
