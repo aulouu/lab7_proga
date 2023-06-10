@@ -1,7 +1,5 @@
 package managers;
 
-import console.Console;
-import console.Print;
 import exceptions.ClosingSocket;
 import exceptions.ConnectionDatabaseError;
 import exceptions.ConnectionError;
