@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="db prop">
+    <list default="true" id="8506f8d7-fc20-45ae-a5dc-c3a7dee0117f" name="Changes" comment="!!">
       <change afterPath="$PROJECT_DIR$/db.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/ClearCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/ClearCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/RemoveGreaterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/RemoveGreaterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/RemoveLowerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/RemoveLowerCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/SQLRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/SQLRequests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +75,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Compound.run">
-    <configuration name="client" type="Application" factoryName="Application">
+    <configuration name="client" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="client" />
       <option name="PROGRAM_PARAMETERS" value="localhost 6090" />
@@ -81,6 +86,7 @@
     <configuration name="server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
+      <option name="PROGRAM_PARAMETERS" value="6090" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -127,6 +133,12 @@
       <workItem from="1686210876011" duration="3003000" />
       <workItem from="1686215419456" duration="2449000" />
       <workItem from="1686229742336" duration="1296000" />
+      <workItem from="1686385590788" duration="119000" />
+      <workItem from="1686478645479" duration="759000" />
+      <workItem from="1686498080007" duration="289000" />
+      <workItem from="1686574387301" duration="84000" />
+      <workItem from="1686582398190" duration="1172000" />
+      <workItem from="1686583780423" duration="1830000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1685099737128</created>
@@ -275,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686217769917</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="!!">
+      <created>1686385650570</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1686385650570</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +333,7 @@
     <MESSAGE value="zaeba" />
     <MESSAGE value="lol" />
     <MESSAGE value="db prop" />
-    <option name="LAST_COMMIT_MESSAGE" value="db prop" />
+    <MESSAGE value="!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="!!" />
   </component>
 </project>

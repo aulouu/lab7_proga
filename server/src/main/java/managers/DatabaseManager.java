@@ -59,7 +59,7 @@ public class DatabaseManager {
                 if (pass.equals(resultSet.getString("password")) && login.equals(resultSet.getString("login")))
                     databaseManagerLogger.info("Пользователь " + user + "авторизирован.");
                 else throw new UserNotFound();
-            }
+            } else throw new UserNotFound();
         } catch (SQLException exception) {
             databaseManagerLogger.error("Произошла ошибка при авторизации пользователя.");
             throw exception;
@@ -202,21 +202,21 @@ public class DatabaseManager {
             LocalDateTime creationTime = LocalDateTime.now();
 
             preparedUpdateObjectStatement = databaseHandler.getPreparedStatement(SQLRequests.UPDATE_OBJECT);
-            preparedUpdateObjectStatement.setInt(1, id);
-            preparedUpdateObjectStatement.setString(2, worker.getName());
-            preparedUpdateObjectStatement.setLong(3, worker.getCoordinates().getX());
-            preparedUpdateObjectStatement.setFloat(4, worker.getCoordinates().getY());
-            preparedUpdateObjectStatement.setTimestamp(5, Timestamp.valueOf(creationTime));
-            preparedUpdateObjectStatement.setLong(6, worker.getSalary());
-            preparedUpdateObjectStatement.setDate(7, Date.valueOf(worker.getStartDate()));
-            preparedUpdateObjectStatement.setString(8, worker.getPosition().toString());
-            preparedUpdateObjectStatement.setString(9, worker.getStatus().toString());
-            preparedUpdateObjectStatement.setInt(10, worker.getPerson().getHeight());
-            preparedUpdateObjectStatement.setString(11, worker.getPerson().getEyeColor().toString());
-            preparedUpdateObjectStatement.setString(12, worker.getPerson().getNationality().toString());
-            preparedUpdateObjectStatement.setInt(13, worker.getPerson().getLocation().getX());
-            preparedUpdateObjectStatement.setFloat(14, worker.getPerson().getLocation().getY());
-            preparedUpdateObjectStatement.setString(15, worker.getPerson().getLocation().getName());
+            preparedUpdateObjectStatement.setString(1, worker.getName());
+            preparedUpdateObjectStatement.setLong(2, worker.getCoordinates().getX());
+            preparedUpdateObjectStatement.setFloat(3, worker.getCoordinates().getY());
+            preparedUpdateObjectStatement.setTimestamp(4, Timestamp.valueOf(creationTime));
+            preparedUpdateObjectStatement.setLong(5, worker.getSalary());
+            preparedUpdateObjectStatement.setObject(6, Date.valueOf(worker.getStartDate()), Types.DATE);
+            preparedUpdateObjectStatement.setObject(7, worker.getPosition(), Types.OTHER);
+            preparedUpdateObjectStatement.setObject(8, worker.getStatus(), Types.OTHER);
+            preparedUpdateObjectStatement.setInt(9, worker.getPerson().getHeight());
+            preparedUpdateObjectStatement.setObject(10, worker.getPerson().getEyeColor(), Types.OTHER);
+            preparedUpdateObjectStatement.setObject(11, worker.getPerson().getNationality(), Types.OTHER);
+            preparedUpdateObjectStatement.setInt(12, worker.getPerson().getLocation().getX());
+            preparedUpdateObjectStatement.setFloat(13, worker.getPerson().getLocation().getY());
+            preparedUpdateObjectStatement.setString(14, worker.getPerson().getLocation().getName());
+            preparedUpdateObjectStatement.setInt(15, id);
             preparedUpdateObjectStatement.setString(16, user.getLogin());
 
             ResultSet resultSet = preparedUpdateObjectStatement.executeQuery();

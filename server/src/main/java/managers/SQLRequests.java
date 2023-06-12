@@ -76,7 +76,7 @@ public class SQLRequests {
             UPDATE worker
             SET (name, coordinates_x, coordinates_y, creation_date, salary, start_date, position, status, person_height, person_eye_color, person_nationality, person_location_x, person_location_y, person_location_name, owner)
             = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            WHERE (id = ?) AND (owner = ?)
+            WHERE (id = ?)
             RETURNING id;
             """;
 

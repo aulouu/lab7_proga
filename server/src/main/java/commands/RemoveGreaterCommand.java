@@ -43,7 +43,7 @@ public class RemoveGreaterCommand extends Command {
             Collection<Worker> remove = collectionManager.getCollection().stream()
                     .filter(Objects::nonNull)
                     .filter(worker -> worker.compareTo(element) >= 1)
-                    .filter(worker -> worker.getOwner().equals(request.getUser().getLogin()))
+                    .filter(worker -> request.getUser().getLogin().equals(worker.getOwner()))
                     .toList();
             for (Worker object : remove) {
                 databaseManager.removeObject(object.getId(), request.getUser());

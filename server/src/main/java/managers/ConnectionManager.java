@@ -33,7 +33,7 @@ public class ConnectionManager implements Runnable {
                 userRequest = (Request) clientReader.readObject();
                 responseToUser = new RequestHandler(userRequest, commandManager).handle(userRequest);
                 Response finalResponseToUser = responseToUser;
-                //serverLogger.info("Запрос обработан успешно." /*+ userRequest.getCommandName() + " обработан успешно."*/);
+                //connectionManagerLogger.info("Запрос обработан успешно." /*+ userRequest.getCommandName() + " обработан успешно."*/);
                 new Thread(() -> {
                     try {
                         clientWriter.writeObject(finalResponseToUser);

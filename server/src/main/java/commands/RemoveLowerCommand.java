@@ -41,7 +41,7 @@ public class RemoveLowerCommand extends Command {
             Collection<Worker> remove = collectionManager.getCollection().stream()
                     .filter(Objects::nonNull)
                     .filter(worker -> worker.getId() < id)
-                    .filter(worker -> worker.getOwner().equals(request.getUser().getLogin()))
+                    .filter(worker -> request.getUser().getLogin().equals(worker.getOwner()))
                     .toList();
             for (Worker object : remove) {
                 databaseManager.removeObject(object.getId(), request.getUser());
