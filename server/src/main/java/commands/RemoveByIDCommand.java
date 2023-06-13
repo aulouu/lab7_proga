@@ -21,7 +21,6 @@ public class RemoveByIDCommand extends Command {
     public RemoveByIDCommand(CollectionManager collectionManager, DatabaseManager databaseManager) {
         super("remove_by_id", " id : удалить элемент из коллекции, ID которого равен заданному");
         this.collectionManager = collectionManager;
-        ;
         this.databaseManager = databaseManager;
     }
 
@@ -39,7 +38,7 @@ public class RemoveByIDCommand extends Command {
         try {
             int id = Integer.parseInt(request.getArgs().trim());
             if (!collectionManager.checkId(id)) throw new NoId();
-            if (!collectionManager.getById(id).getOwner().equals(request.getUser().getLogin())) throw new PermissionDenied();
+            if (!collectionManager.checkPermission(id, request.getUser().getLogin())) throw new PermissionDenied();
             if (databaseManager.removeObject(id, request.getUser())) {
                 collectionManager.removeElement(collectionManager.getById(id));
                 return new Response(ResponseStatus.OK, "Элемент с таким ID удален.");

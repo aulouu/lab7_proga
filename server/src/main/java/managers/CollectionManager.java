@@ -103,6 +103,14 @@ public class CollectionManager {
         return null;
     }
 
+    public boolean checkPermission(int id, String login) {
+        Worker test = getById(id);
+        if (test == null) return false;
+        String owner = test.getOwner();
+        if (owner == null) return true;
+        return owner.equals(login);
+    }
+
     /**
      * Изменяет элемент по id
      *
@@ -131,6 +139,7 @@ public class CollectionManager {
 
     /**
      * Удаляет элементы из коллекции
+     *
      * @param deletedIds элементы
      */
     public void removeElements(List<Integer> deletedIds) {

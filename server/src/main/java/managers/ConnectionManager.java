@@ -42,7 +42,7 @@ public class ConnectionManager implements Runnable {
                         connectionManagerLogger.error("Произошла ошибка при отправке данных на клиент.");
                     }
                 } ).start();
-            } while (responseToUser.getResponseStatus() != ResponseStatus.EXIT);
+            } while (responseToUser.getResponseStatus() != ResponseStatus.SERVER_EXIT);
             clientSocket.close();
         } catch (ClassNotFoundException exception) {
             connectionManagerLogger.error("Произошла ошибка при чтении данных.");

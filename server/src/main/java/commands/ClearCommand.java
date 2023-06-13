@@ -36,7 +36,7 @@ public class ClearCommand extends Command {
         if (!request.getArgs().isBlank()) throw new IllegalArgument();
         try {
             List<Integer> deleteIds = collectionManager.getCollection().stream()
-                    .filter(worker -> request.getUser().getLogin().equals(worker.getOwner()))
+                    .filter(worker -> worker.getOwner() == null || request.getUser().getLogin().equals(worker.getOwner()))
                     .map(Worker::getId)
                     .toList();
             if (databaseManager.removeAllObjects(deleteIds, request.getUser())) {

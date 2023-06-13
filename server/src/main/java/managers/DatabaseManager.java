@@ -146,7 +146,7 @@ public class DatabaseManager {
                         worker.getPosition(),
                         worker.getStatus(),
                         worker.getPerson(),
-                        worker.getOwner()
+                        user.getLogin()
                 );
                 databaseManagerLogger.info("Новый элемент добавлен в коллекцию.");
             }
@@ -217,7 +217,7 @@ public class DatabaseManager {
             preparedUpdateObjectStatement.setFloat(13, worker.getPerson().getLocation().getY());
             preparedUpdateObjectStatement.setString(14, worker.getPerson().getLocation().getName());
             preparedUpdateObjectStatement.setInt(15, id);
-            preparedUpdateObjectStatement.setString(16, user.getLogin());
+            //preparedUpdateObjectStatement.setString(16, user.getLogin());
 
             ResultSet resultSet = preparedUpdateObjectStatement.executeQuery();
             return resultSet.next();

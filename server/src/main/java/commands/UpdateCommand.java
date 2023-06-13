@@ -40,7 +40,7 @@ public class UpdateCommand extends Command {
         try {
             int id = Integer.parseInt(request.getArgs().trim());
             if (!collectionManager.checkId(id)) throw new NoId();
-            if (!collectionManager.getById(id).getOwner().equals(request.getUser().getLogin())) throw new PermissionDenied();
+            if (!collectionManager.checkPermission(id, request.getUser().getLogin())) throw new PermissionDenied();
             if (Objects.isNull(request.getObject())) {
                 return new Response(ResponseStatus.ASK_OBJECT, "Для команды " + this.getName() + " требуется объект.");
             }
