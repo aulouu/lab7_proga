@@ -57,7 +57,7 @@ public class Location implements Validator, Serializable {
         return "{" + "\n" +
                 "x = " + x + "\n" +
                 "y = " + y + "\n" +
-                "name = " + name + " }";
+                "name = " + name + "\n" + "}";
     }
 
     @Override

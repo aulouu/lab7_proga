@@ -66,11 +66,11 @@ public class Person implements Validator, Serializable {
 
     @Override
     public String toString() {
-        return "{ " + "\n" +
+        return "[ " + "\n" +
                 "height = " + height + "\n" +
                 "eyeColor = " + eyeColor + "\n" +
                 "nationality = " + nationality + "\n" +
-                "location = " + location;
+                "location = " + location + "\n" + " ]";
     }
 
     @Override
