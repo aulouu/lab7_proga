@@ -8,12 +8,12 @@ import java.util.List;
 
 public class App {
     private static Print console = new Console();
-    public static int port;
+    public static int port = 6090;
     //public static final int connection_timeout = 60 * 1000;
     //private static final Print console = new Console();
 
     public static void main(String[] args) {
-        try {
+        /*try {
             if (args.length != 1)
                 throw new IllegalArgument("В аргументы командной строки необходимо передать port.");
             port = Integer.parseInt(args[0]);
@@ -21,6 +21,12 @@ public class App {
         } catch (IllegalArgument exception) {
             console.printError(exception.getMessage());
             System.exit(1);
+        }*/
+        if (args.length != 0) {
+            try {
+                port = Integer.parseInt(args[0]);
+            } catch (NumberFormatException ignored) {
+            }
         }
         DatabaseHandler databaseHandler = new DatabaseHandler();
         DatabaseManager databaseManager = new DatabaseManager(databaseHandler);

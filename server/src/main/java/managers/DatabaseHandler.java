@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
@@ -13,26 +14,31 @@ public class DatabaseHandler {
     private final String JDBC_DRIVER = "org.postgresql.Driver";
     public static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/studs";
     public static final String DATABASE_URL_HELIOS = "jdbc:postgresql://pg:5432/studs";
-    public static final String DATABASE_CONFIG = "C:\\Users\\Алина\\IdeaProjects\\lab7_proga\\db.cfg";
+    String dbProps = "db.cfg";
     private Connection connection;
     public boolean isConnect = false;
     static final Logger databaseHandlerLogger = LoggerFactory.getLogger(DatabaseHandler.class);
 
     public DatabaseHandler() {
         try {
-            this.connectToDatabase();
-            if(isConnect)
+            this.connectToDatabase(dbProps);
+            if (isConnect)
                 this.createTables();
         } catch (SQLException exception) {
             databaseHandlerLogger.error("Таблицы уже существуют.");
         }
     }
 
-    public void connectToDatabase() {
+    public void connectToDatabase(String propertiesFile) {
         Properties properties = null;
         try {
             properties = new Properties();
-            properties.load(new FileInputStream(DATABASE_CONFIG));
+            try (FileReader fr = new FileReader(propertiesFile)) {
+                properties.load(fr);
+            } catch (IOException exception) {
+                databaseHandlerLogger.error("Ошибка в чтении конфинга базы данных.");
+                isConnect = false;
+            }
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL, properties);
             databaseHandlerLogger.info("Соединение с базой данных установлено.");
@@ -47,9 +53,6 @@ public class DatabaseHandler {
         } catch (ClassNotFoundException exception) {
             databaseHandlerLogger.error("Драйвер управления базой данных не найден.");
             isConnect = false;
-        } catch (IOException exception) {
-           databaseHandlerLogger.error("Ошибка в чтении конфинга базы данных.");
-           isConnect = false;
         }
     }
 
@@ -86,7 +89,7 @@ public class DatabaseHandler {
     }
 
     public void createTables() throws SQLException {
-            connection.prepareStatement(SQLRequests.CREATE_TABLES).execute();
-            databaseHandlerLogger.info("Таблицы успешно созданы.");
+        connection.prepareStatement(SQLRequests.CREATE_TABLES).execute();
+        databaseHandlerLogger.info("Таблицы успешно созданы.");
     }
 }
